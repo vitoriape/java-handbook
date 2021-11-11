@@ -1,0 +1,99 @@
+<!doctype html>
+<html>
+    <head>     
+        <style>
+            body {
+                background-color: #d0d0d0;
+            }
+        </style>
+        <title>Algorithm Quickstart</title>  
+    
+            <div style="text-align:left">
+            <div class="w3-content">
+            </div>
+    </head>
+
+    <body>  
+    <font size="3" face="Times">
+        <form name="frmJstester" method="post" action="#" style="text-align:center" onsubmit="return formulario_operacoes(this);">
+
+        <br>
+
+        <big><strong><p style="text-align:center">Teste de Formulário</p></strong></big>
+        <p>
+        1ª Entrada: <input type="text" name="fisrt_input" id="A"/>
+        </p>
+        <p>
+        2º Entrada: <input type="text" name="second_input" id="B"/>
+        </p>
+        <label><input type="submit" name="sbt" value="Submit"/></label></font>
+    </body>   
+
+    <script type="text/javascript">
+
+    function formulario_operacoes(frm){
+
+    // [ Confirma que os campos do formulário estão preenchidos, senão retorna erro ]
+    if( frm.fisrt_input.value == "" ){
+        alert( "Por favor, indique um valor válido para a 1º Entrada." );
+            frm.fisrt_input.focus();
+
+        return false;
+
+    }
+       
+    if( frm.second_input.value == "" ){
+        alert( "Por favor, indique um valor válido para a 2º Entrada." );
+               frm.second_input.focus();
+
+            return false;
+
+    }
+       
+    // [ Usa os valores do formulário em operações de soma, divisão, multiplicação e divisão ]
+    operation_sum = parseFloat( frm.fisrt_input.value, 10 ) 
+        + parseFloat( frm.second_input.value, 10)
+
+    operation_subtration = parseFloat( frm.fisrt_input.value, 10 ) 
+        - parseFloat( frm.second_input.value, 10)
+
+    operation_multiplication = parseFloat( frm.fisrt_input.value, 10 ) 
+        * parseFloat( frm.second_input.value, 10)
+
+    operation_division = parseFloat( frm.fisrt_input.value, 10 ) 
+        / parseFloat( frm.second_input.value, 10)
+
+
+    // [ Usa os valores do formulário em operações de dupla soma, dupla divisão, dupla multiplicação e dupla divisão ]
+    operation_double_sum = 2 * ( parseFloat( frm.fisrt_input.value, 10 ) 
+        + parseFloat( frm.second_input.value, 10 ))
+
+    operation_double_subtration = 2 * ( parseFloat( frm.fisrt_input.value, 10 ) 
+        - parseFloat( frm.second_input.value, 10 ))
+
+    operation_double_multiplication = 2 * ( ( frm.fisrt_input.value, 10 ) 
+        * parseFloat( frm.second_input.value, 10 ))
+
+    operation_double_division = 2 * ( parseFloat( frm.fisrt_input.value, 10 ) 
+        / parseFloat( frm.second_input.value, 10 ))
+
+
+    // [ Exibe os resultados da soma ]
+        alert( "Results:\n\n\n\n" + 
+           "Sum: " + operation_sum + "\n" + 
+           "Subtration: " + operation_subtration + "\n" + 
+           "Multiplication: " + operation_multiplication + "\n" + 
+           "Division: " + operation_division );
+
+        alert( "Doubles:\n\n\n\n" + 
+           "Double Sum: " + operation_double_sum + "\n" + 
+           "Double Subtration: " + operation_double_subtration + "\n" + 
+           "Double Multiplication: " + operation_double_multiplication + "\n" + 
+           "Double Division: " + operation_double_division );
+
+    } 
+    </script>
+</html>
+
+
+   
