@@ -1,11 +1,13 @@
-<p align="center">
- ◽ <a href="#-IF">IF</a> |
- <a href="#-FOR">FOR</a> |  
- <a href="#-SWITCH">SWITCH</a> |
- <a href="#-PROGRAMAÇÂO-ESTRUTURADA">PROGRAMAÇÂO ESTRUTURADA</a> |
- <a href="#-VETORES">VETORES</a> |
- <a href="#-MATRIZES">MATRIZES</a> ◽
-</p>
+Conteúdos
+=================
+<!--ts-->
+   * [IF](#if)
+   * [FOR](#for)
+   * [SWITCH](#switch)
+   * [PROGRAMAÇÂO ESTRUTURADA](#programaçâo-estruturada)
+   * [VETORES](#vetores)
+   * [MATRIZES](#matrizes)
+<!--te-->
 
 ---
 
