@@ -1,8 +1,10 @@
+import java.util.Locale;
 import java.util.Scanner;
 
 public class Operacoes {
     public static void main(String args[]) {
         
+        Locale.setDefault(Locale.US);
         Scanner read_tool = new Scanner(System.in);
         
         int A;
