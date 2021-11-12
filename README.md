@@ -1,5 +1,5 @@
 <h3 align="center"> 
-<img alt="vmkdir banner" src="https://raw.githubusercontent.com/vitoriape/algorithm_quickstart/main/images/algorithmquickstart-banner.png?token=ANKU7XG54LIPQEWZVF7OVVDBRWZUC" width="1000" height="250">
+<img alt="algorithm_quickstart banner" src="https://github.com/vitoriape/algorithm_quickstart/blob/main/images/algorithmquickstart-banner.png" width="1000" height="250">
 </h3>
 
 <p align="center">
