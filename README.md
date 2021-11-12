@@ -5,14 +5,8 @@
 <p align="center">
   <img alt="GitHub language count" src="https://img.shields.io/github/languages/count/vitoriape/algorithm_quickstart">
   
-  <img alt="GitHub top language" src="https://img.shields.io/github/languages/top/vitoriape/algorithm_quickstart">
-  
   <a href="https://github.com/vitoriape/algorithm_quickstart/blob/main/LICENSE">
     <img alt="License: MIT" src="https://img.shields.io/badge/License-MIT-green.svg">
-  </a>
-  
-  <a href="https://github.com/vitoriape/algorithm_quickstart/commits/main">
-    <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/vitoriape/algorithm_quickstart">
   </a>
 </p>
 
