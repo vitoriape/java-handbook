@@ -23,6 +23,7 @@ public class Operacoes {
             System.out.printf("%d * %d = %3d\n", A, B, (A * B));
             System.out.printf("%d / %d = %3d (divisão inteira)\n", A, B, (A / B));
             System.out.printf("%d / %d = %6.2f (divisão exata)\n", A, B, ((double) A / B));
+            System.out.printf("%d * %d = %3d (mod/resto)\n", A, B, (A % B));
      
     }
 }
