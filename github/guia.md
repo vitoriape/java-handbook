@@ -2,16 +2,16 @@
 
 ```bash
 # Clonar repositório
-$ git clone <https://github.com/vitoriape/algorithm_quickstart.git>
+$ git clone <https://github.com/vitoriape/algorithm-quickstart.git>
 
 # Acessar repositório
-$ cd algorithm_quickstart
+$ cd algorithm-quickstart
 
 # Transformar pasta em repositório
 $ git init
 
 # Sincronizar com repositório no GitHub
-$ git remote add origin git@github.com:vitoriape/algorithm_quickstart.git
+$ git remote add origin git@github.com:vitoriape/algorithm-quickstart.git
 
 # Verificar repositório
 $ git status
