@@ -1,5 +1,5 @@
 <h3 align="center"> 
-<img alt="algorithm_quickstart banner" src="https://github.com/vitoriape/algorithm_quickstart/blob/main/images/algorithmquickstart-banner.png" width="1000" height="250">
+<img alt="algorithm_quickstart banner" src="https://github.com/vitoriape/algorithm_quickstart/blob/main/.images/algorithmquickstart-banner.png" width="1000" height="250">
 </h3>
 
 <p align="center">
