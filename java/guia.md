@@ -117,29 +117,33 @@ Armazenam as localizações de objetos na memória do computador, sendo que esse
 
 - Exemplo
 ```java
+<modificador de acesso> class nomeClasse {
+
+  // Local onde os objetos são criados e manipulados
+  
+  variável;
+  método;
+
+}
 ```
 
 ---
 
 #### Objetos
 
-```java
-```
+Os objetos computacionais em Java são características definidas pelas classes, através dos quais é possível inicializar atributos e invocar métodos.
 
 ---
 
 #### Atributos
 
-```java
-```
+Características de um objeto, conhecidas como variáveis.
 
 ---
 
 #### Métodos
 
-
-```java
-```
+Ações que os objetos podem exercer quando solicitados.
 
 ---
 
