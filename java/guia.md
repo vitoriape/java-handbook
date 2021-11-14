@@ -4,14 +4,6 @@ Conteúdos
    * [Operadores](#operadores)
       * [Operadores Aritméticos](#operadores-aritméticos)
    * [Tipos Primitivos](#tipos-primitivos)
-      * [Char](#char)
-      * [Int](#int)
-      * [Short](#short)
-      * [Long](#long)
-      * [Float](#float)
-      * [Double](#double)
-      * [Byte](#byte)
-      * [Boolean](#boolean)
       * [Casting de Tipos Primitivos](#casting-de-tipos-primitivos)
    * [Classes](#classes)
       * [Objetos](#objetos)
@@ -54,50 +46,35 @@ Conteúdos
 ### Tipos Primitivos
 Variáveis de tipo primitivo armazenam somente um valor de seu tipo de cada vez, ou seja, assim que outro valor for atribuído a essa variáel, seu valor original é substituído. **Sempre são inicializadas com o valor `0` ou `false` no caso do tipo `boolean`**.
 
-#### Char
-Armazena caracteres.
+| Declaração 	|        Função       	               |      
+|:----:	      |:-------------------:	               |
+| char 	      | Armazena caracteres 	               | 
+| int         | Armazena números inteiros            |
+| short       | Armazena números inteiros de 16 bits |
+| long        | Armazena números inteiros de 64 bits |
+| float       | Armazena números decimais reais, ou seja, **números de ponto flutuante de maior extensão** com mais precisão. Caso o valor da variável seja do tipo `float` mas o programa interpretá-la como double, basta acrescentar `f` ao final do valor |
+| double | Armazena números decimais reais, ou seja, **números de ponto flutuante de menor extensão** com mais precisão |
+| byte | |
+| boolean | Armazena valores booleanos/lógicos, ou seja, `true` e `false` |
+
+
+
+- Exemplos
 ```java
 char dadoChar = 'D';
-```
 
-#### Int
-Armazena números inteiros.
-```java
 int dadoInt = 5;
-```
 
-#### Short
-Armazena números inteiros de 16 bits.
-```java
 short dadoShort = 32767;
-```
 
-#### Long
-Armazena números inteiros de 64 bits.
-```java
 long dadoLong = 9223372036854775807L;
-```
 
-#### Float
-Armazena números decimais reais, ou seja, **números de ponto flutuante de maior extensão** com mais precisão. Caso o valor da variável seja do tipo `float` mas o programa interpretá-la como double, basta acrescentar `f` ao final do valor.
-```java
 float dadoFloat = 6.5f;
-```
 
-#### Double
-Armazena números decimais reais, ou seja, **números de ponto flutuante de menor extensão** com mais precisão.
-```java
 double dadoDouble = 3.59;
-```
 
-#### Byte
-```java
 byte dadoByte = 127;
-```
 
-#### Boolean
-Armazena valores booleanos/lógicos, ou seja, `true` e `false`.
-```java
 boolean dadoBoolean = true;
 ```
 
