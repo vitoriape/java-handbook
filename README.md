@@ -3,10 +3,11 @@
 </h3>
 
 <p align="center">
-  <img alt="GitHub language count" src="https://img.shields.io/github/languages/count/vitoriape/algorithm_quickstart">
+  <img alt="GitHub language count" src="https://img.shields.io/github/languages/count/vitoriape/algorithm-quickstart">
   
-  <a href="https://github.com/vitoriape/algorithm_quickstart/blob/main/LICENSE">
-    <img alt="License: MIT" src="https://img.shields.io/badge/License-MIT-green.svg">
+  <img alt="GitHub top language" src="https://img.shields.io/github/languages/top/vitoriape/algorithm-quickstart">
+  
+  <img alt="GitHub repo size" src="https://img.shields.io/github/repo-size/vitoriape/algorithm-quickstart?color=%23ff5c33">
   </a>
 </p>
 
