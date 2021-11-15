@@ -11,12 +11,13 @@ Conteúdos
       * [Métodos](#métodos)
       * [Modificadores de Acesso](#modificadores-de-acesso)
       * [Tipos de Métodos](#tipos-de-métodos)
+   * [Vetores](#vetores)
    * [Começando um Código](#começando-um-código)
       * [Criando uma Classe](#-criando-uma-classe)
       * [Criando um Método](#-criando-um-método)
       * [Inserindo Atributos](#-inserindo-atributos)
       * [Compilando e Executando](#-compilando-e-executando)
-   * [Vetores](#vetores)
+   
       
 ---
 
@@ -186,7 +187,7 @@ Caso nenhum modificador de acesso seja estabelecido, será atribuído um padrão
 | `void`           | O método não retorna nenhum valor                      |
 | `main`           | Determina o ponto de início de execução                | 
 
----
+
 
 - Static
 
@@ -200,7 +201,6 @@ static {
 }
 ```
 
----
 
 - Void
 ```java
@@ -225,7 +225,6 @@ System.out.println(soma( 10, 10 ));
 // Imprime o resultado da soma (20)
 ```
 
----
 
 - Main
 
@@ -246,6 +245,32 @@ public static void main(String[] args) {
 	  pj.segundoMetodo();
     
 }	
+```
+
+---
+
+### Vetores
+
+- Declarando um vetor
+```java
+<tipo-de-dado> nome-do-vetor[];
+```
+
+- Reservando espaço para seus elementos
+```java
+nome-do-vetor = new <tipo-de-dado>[número de elementos];
+```
+
+- Exemplos
+```java
+// Vetor para armazenar 10 valores do tipo real
+double valorDolar = new double[5];
+
+// Vetor do tipo inteiro com 10 elementos
+int vetor10 = new int[10];
+
+// Vetor que armazena o nome dos doze meses do ano
+String mesesAno = new String[12];
 ```
 
 ---
@@ -308,32 +333,6 @@ C:\Users\pasta-com-arquivo-java> javac nomeClasse.java
 **3. Digite `java` e o nome do arquivo para executar a classe**
 ```bash
 C:\Users\pasta-com-arquivo-java> java nomeClasse
-```
-
----
-
-### Vetores
-
-- Declarando um vetor
-```java
-<tipo-de-dado> nome-do-vetor[];
-```
-
-- Reservando espaço para seus elementos
-```java
-nome-do-vetor = new <tipo-de-dado>[número de elementos];
-```
-
-- Exemplos
-```java
-// Vetor para armazenar 10 valores do tipo real
-double valorDolar = new double[5];
-
-// Vetor do tipo inteiro com 10 elementos
-int vetor10 = new int[10];
-
-// Vetor que armazena o nome dos doze meses do ano
-String mesesAno = new String[12];
 ```
 
 ---
