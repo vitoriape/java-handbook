@@ -33,7 +33,6 @@ Este projeto é um compilado de guias e códigos de teste criados para auxliar n
 
 O desenvolvimento desse script utiliza as seguintes ferramentas:
 
-- [Git](https://git-scm.com/)
 - [Visual Studio Code](https://code.visualstudio.com/docs)
 - [IntelliJ IDEA](https://www.jetbrains.com/pt-br/idea/resources/)
 - [Java SE Development Kit](https://www.oracle.com/java/technologies/downloads/)
