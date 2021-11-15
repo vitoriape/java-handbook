@@ -9,11 +9,15 @@ Conteúdos
       * [Objetos](#objetos)
       * [Atributos](#atributos)
       * [Métodos](#métodos)
+   * [Começando um Código](#começando-um-código)
+      * [Criando uma Classe](#-criando-uma-classe)
+      * [Criando um Método](#-criando-um-método)
+       * [Modificadores de Acesso](#modificadores de acesso)
    
 
 ---
 
-#### Operadores
+### Operadores
 
 |    Tipo    	| Sinal 	| Exemplo 	  |
 |:----------:	|:-----:	|:-------:	  |
@@ -41,9 +45,10 @@ Conteúdos
 
 ---
 
-💡 Os dados em Java são divididos em "dados por valor", que são os **tipos primitivos**, e em "dados por referência", chamados de **classes**.
+### Dados em Java
+Os dados em Java são divididos em "dados por valor", que são os **tipos primitivos**, e em "dados por referência", chamados de **classes**. 💡
 
-### Tipos Primitivos
+#### Tipos Primitivos
 Variáveis de tipo primitivo armazenam somente um valor de seu tipo de cada vez, ou seja, assim que outro valor for atribuído a essa variáel, seu valor original é substituído. **Sempre são inicializadas com o valor `0` ou `false` no caso do tipo `boolean`**.
 
 | Declaração 	|        Função       	               |      
@@ -56,8 +61,6 @@ Variáveis de tipo primitivo armazenam somente um valor de seu tipo de cada vez,
 | double | Armazena números decimais reais, ou seja, **números de ponto flutuante de menor extensão** com mais precisão |
 | byte | |
 | boolean | Armazena valores booleanos/lógicos, ou seja, `true` e `false` |
-
-
 
 - Exemplos
 ```java
@@ -117,36 +120,56 @@ Armazenam as localizações de objetos na memória do computador, sendo que esse
 
 - Exemplo
 ```java
-<modificador de acesso> class nomeClasse {
+class nomeClasse {
+  // Objetos
 
-  // Local onde os objetos são criados e manipulados
+  <modificador de acesso> <tipo de retorno> nomeMétodo ([<argumentos>]){
+    // Atributos
   
-  variável;
-  método;
-
+  }
 }
 ```
 
----
+#### Métodos
+
+Ações que os [objetos](#objetos) podem exercer quando solicitados. Um método em Java equivale a uma função, uma subrotina ou um procedimento em outras linguagens de programação. Diferente do **JavaScript**, em Java não existem **métodos globais**, ou seja, todo método deve ser criado dentro de uma [classe](#classes).
+
 
 #### Objetos
 
-Os objetos computacionais em Java são características definidas pelas classes, através dos quais é possível inicializar atributos e invocar métodos.
+Os objetos computacionais em Java são características definidas pelas [classes](#classes), através dos quais é possível inicializar atributos e invocar métodos.
 
----
 
 #### Atributos
 
-Características de um objeto, conhecidas como variáveis.
+Características de um [objeto](#objetos), conhecidas como variáveis.
 
 ---
 
-#### Métodos
+### Começando um Código
+Na linguagem Java, todo programa roda através de uma [classe](#classes) e, para indicar ao Java que você está criando uma classe, basta usar a sintaxe `class` e usar `{ }` após. Depois de definir a classe, é preciso estabelecer seus comportamentos ([métodos](#métodos), ou seja, o que essa classe irá executar.
 
-Ações que os objetos podem exercer quando solicitados.
+#### 1️⃣ Criando uma Classe
+```java
+class nomeClasse { }
+```
+
+>**class = indica ao Java que esta é uma declaração de classe**
+
+#### 2️⃣ Criando um Método
+```java
+class nomeClasse {
+
+    public static void main(String[] args) {
+
+    }
+}
+```
+
+>**public static = modificador de acesso**
 
 ---
 
-
-
+#### Modificador de Acesso
+Declaração que controla o acesso a [Atributos]() e [Métodos]()
 
