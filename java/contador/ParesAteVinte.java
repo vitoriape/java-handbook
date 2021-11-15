@@ -1,15 +1,17 @@
-class ParesAte20 {
+class ParesAteVinte {
   public static void main(String[] args) {
-    int contador = 1;
     
+    int contador = 1;
       while(contador <= 20){
 
         if(contador % 2 == 0){
-
-            System.out.println(contador);
+          System.out.println(contador);
+    
         } 
-                contador++;
-      } 
+        
+          contador++;
+        
+      }
   }
 }
 
