@@ -3,11 +3,11 @@
 </h3>
 
 <p align="center">
-  <img alt="GitHub language count" src="https://img.shields.io/github/languages/count/vitoriape/algorithm-quickstart">
+  <img alt="GitHub language count" src="https://img.shields.io/github/languages/count/vitoriape/algorithm-quickstart?color=%23ff5c33">
   
   <img alt="GitHub top language" src="https://img.shields.io/github/languages/top/vitoriape/algorithm-quickstart">
   
-  <img alt="GitHub repo size" src="https://img.shields.io/github/repo-size/vitoriape/algorithm-quickstart?color=%23ff5c33">
+  <img alt="GitHub repo size" src="https://img.shields.io/github/repo-size/vitoriape/algorithm-quickstart?color=%ffff00">
   </a>
 </p>
 
@@ -22,22 +22,36 @@
 
 ### 📌 Sobre
 
-.
+Este projeto é um compilado de guias e códigos de teste criados para auxliar na introdução a novas linguagens de programação e ferramentas úteis para novos desenvolvedores. As ferramentas/linguagens contempladas por este projeto são as seguintes:
+
+- [Git](https://git-scm.com/docs/git/en)
+- [Java](https://www.oracle.com/java/technologies/javase-documentation.html)
+- [JavaScript](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript)
+- [HTML](https://developer.mozilla.org/pt-BR/docs/Web/HTML)
 
 ### 🛠 Ferramentas
 
-Development of this script utilizes the tools listed below:
+O desenvolvimento desse script utiliza as seguintes ferramentas:
 
 - [Git](https://git-scm.com/)
 - [Visual Studio Code](https://code.visualstudio.com/docs)
 - [IntelliJ IDEA](https://www.jetbrains.com/pt-br/idea/resources/)
-- [JavaScript](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript)
-- [HTML](https://developer.mozilla.org/pt-BR/docs/Web/HTML)
-- [Java](https://www.oracle.com/java/technologies/javase-documentation.html)
+- [Java SE Development Kit](https://www.oracle.com/java/technologies/downloads/)
 
 ### 💻 Instalação
+```bash
+# Clone esse repositório
+$ git clone <https://github.com/vitoriape/algorithm-quickstart>
 
-.
+# Acesse a pasta do projeto pelo terminal
+$ cd algorithm-quickstart
+
+# Utilize a IDE ou o editor de sua preferência para testar
+
+# Dica: utilize os guias introdutórios para cada linguagem/ferramenta
+$ cd java
+$ start guia.md
+```
 
 ---
 
