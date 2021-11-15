@@ -1,4 +1,4 @@
-class ParesAteVinte {
+class ContaParesAte20 {
   public static void main(String[] args) {
     
     int contador = 1;
