@@ -17,6 +17,7 @@ Conteúdos
       * [Criando um Método](#-criando-um-método)
       * [Inserindo Atributos](#-inserindo-atributos)
       * [Compilando e Executando](#-compilando-e-executando)
+   * [Recursividade e Iteratividade](#recursividade-e-iteratividade)
    
       
 ---
@@ -333,6 +334,57 @@ C:\Users\pasta-com-arquivo-java> javac nomeClasse.java
 **3. Digite `java` e o nome do arquivo para executar a classe**
 ```bash
 C:\Users\pasta-com-arquivo-java> java nomeClasse
+```
+
+---
+
+### Recursividade e Iteratividade
+A recursividade traduz-se como uma sub-rotina que pode **invocar a si mesma**.  
+Enquanto a iteratividade é a **repetição de uma ou mais ações**.
+
+- Iteratividade
+
+Um exemplo de iteratividade é construir um código para calcular fatoriais usando a função `for`:
+```javascript
+fatorial = 1
+
+for ( var contador = 1 ; contador <= numero ; contador++ ) {
+	fatorial = fatorial * contador 
+```
+
+- Recursividade
+
+Pensando em um elemento recursivo, é possível construir a mesma dinâmica com uma classe `int fat`:
+```java
+import java.util.Scanner;
+
+class CalcularFatorial {
+   public static void main(String[] args) {
+
+        Scanner kbScanner = new Scanner(System.in);
+        System.out.println( "Por favor, informe o número para calcular seu fatorial: " );
+
+        int nc = kbScanner.nextInt();
+
+
+        System.out.println();
+        System.out.println( "O fatorial de " + nc + "é " + fat(nc) );
+            
+    }
+
+   public static int fat(int n){
+
+        if ( n <= 1 ){
+
+            return 1;
+      
+        }else{
+
+            return n * fat (n - 1);
+
+        }
+    }
+}
 ```
 
 ---
