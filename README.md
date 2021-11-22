@@ -53,6 +53,7 @@ Development of this template utilizes the tools listed below:
 - [Visual Studio Code](https://code.visualstudio.com/docs)
 - [IntelliJ IDEA](https://www.jetbrains.com/pt-br/idea/resources/)
 - [Java SE Development Kit](https://www.oracle.com/java/technologies/downloads/)
+- [Anaconda Individual Edition](https://www.anaconda.com/products/individual)
 
 ## References
 ### Git and GitHub
@@ -67,6 +68,9 @@ Development of this template utilizes the tools listed below:
 ### HTML
 - [HTML Reference](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference)
 
+### Jupyter
+- [Jupyter Read The Docs](https://jupyter.readthedocs.io/pt_BR/latest/content-quickstart.html)
+
 ---
 
 ## Features
@@ -75,6 +79,7 @@ Development of this template utilizes the tools listed below:
 - [x] [Java](./java)
 - [x] [JavaScript](./javascript)
 - [x] [HTML](./html)
+- [x] [Jupyter](./jupyter)
 - [ ] [Python]()
 - [ ] [VBA]()
 
