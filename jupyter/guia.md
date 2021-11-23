@@ -14,9 +14,18 @@
 - **Importar pyautogui como variável**
 
 ```jupyter
+!pip install pyautogui
 import pyautogui
 
 import pyautogui as nomeVariavel
+```
+
+- **Importar selenium como variável**
+```jupyter
+!pip install selenium
+from selenium import webdriver
+
+nomeVariavel = webdriver.NomeDoBrowser()
 ```
 
 - **Pausar script da classe (segundos)**
@@ -67,6 +76,14 @@ nomeVariavel.press('enter')
 
 ```jupyter
 nomeVariavel.hotkey('win', 'r')
+```
+
+- **Abrindo Programas pelo Win R**
+```jupyter
+nomeVariavel.hotkey('win', 'r')
+nomeVariavel.typewrite('microsoft-edge://')
+nomeVariavel.sleep(2)
+nomeVariavel.press('enter')
 ```
 
 ---
