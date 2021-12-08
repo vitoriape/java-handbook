@@ -48,12 +48,13 @@ Index
 Este projeto é um compilado de guias e códigos de teste criados para auxliar na introdução a novas linguagens de programação e ferramentas úteis para novos desenvolvedores. 
 
 ## Tools
-Development of this template utilizes the tools listed below:
+O desenvolvimento desses códigos de teste utiliza as ferramentas abaixo:
 
 - [Visual Studio Code](https://code.visualstudio.com/docs)
 - [IntelliJ IDEA](https://www.jetbrains.com/pt-br/idea/resources/)
 - [Java SE Development Kit](https://www.oracle.com/java/technologies/downloads/)
 - [Anaconda Individual Edition](https://www.anaconda.com/products/individual)
+- [Cisco Packet Tracer](https://www.netacad.com/pt-br/courses/packet-tracer)
 
 ## References
 ### Git and GitHub
@@ -71,6 +72,9 @@ Development of this template utilizes the tools listed below:
 ### Jupyter
 - [Jupyter Read The Docs](https://jupyter.readthedocs.io/pt_BR/latest/content-quickstart.html)
 
+### Packet Tracer
+- [Cisco Packet Tracer 8.1.0 FAQ](https://www.netacad.com/sites/default/files/cisco-packet-tracer-faq.pdf)
+
 ---
 
 ## Features
@@ -80,6 +84,7 @@ Development of this template utilizes the tools listed below:
 - [x] [JavaScript](./javascript)
 - [x] [HTML](./html)
 - [x] [Jupyter](./jupyter)
+- [x] [Packet Tracer](./packet-tracer)
 - [ ] [Python]()
 - [ ] [VBA]()
 
