@@ -337,7 +337,7 @@ Sw-Sala-1# reload
 
 ### Endereçamento
 
-<table><thead><tr><th></th><th></th></tr></thead><tbody><tr><td>Protocolo</td><td>Interpreta mensagens em um software</td></tr><tr><td>IP</td><td>Rótulo unitário para protocolo de Internet</td></tr><tr><td>Rede</td><td>Endereçamento base de IP</td></tr><tr><td>Gateway</td><td>Endereço da placa de rede, o IP da porta do roteador</td></tr><tr><td>Máscara de Rede</td><td>Define a quantidade de máquinas e classes</td></tr><tr><td>Broadcast</td><td>Transfere mensages para todos os receptores ao mesmo tempo</td></tr><tr><td>DHCP</td><td>Configura automaticamente as informações de endereçamento IPv4</td></tr><tr><td>DHCPv6 e SLAAC</td><td>Alocam endereços dinâmicos para Ipv6</td></tr></tbody></table>
+<table><thead><tr><th></th><th></th></tr></thead><tbody><tr><td>Protocolo</td><td>Interpreta mensagens em um software</td></tr><tr><td>IP</td><td>Rótulo unitário para protocolo de Internet</td></tr><tr><td>Endereço IP</td><td>Endereço lógico da Camada de Rede (Camada 3)</td></tr><tr><td>Rede</td><td>Endereçamento base de IP</td></tr><tr><td>Gateway</td><td>Endereço da placa de rede, o IP da porta do roteador</td></tr><tr><td>Máscara de Rede</td><td>Define a quantidade de máquinas e classes</td></tr><tr><td>Broadcast</td><td>Transfere mensages para todos os receptores ao mesmo tempo</td></tr><tr><td>DHCPv4</td><td>Configura automaticamente as informações de endereçamento IPv4</td></tr><tr><td>DHCPv6</td><td>Alocam endereços dinâmicos para Ipv6</td></tr><tr><td>SLAAC</td><td>Configuração automática de endereço sem estado</td></tr></tbody></table>
 
 >---
 
