@@ -4,14 +4,29 @@
    * [Infraestrutura de Redes](#infraestrutura-de-redes)
       * [Componentes de Rede](#componentes-de-rede)
       * [Tipos de Rede](#tipos-de-rede)
+        * [Rede Ponto a Ponto | Peer-to-Peer](#rede-ponto-a-ponto--peer-to-peer)
+        * [Rede Cliente-Servidor | Rede Estrela](#rede-cliente-servidor--rede-estrela)
+        * [Escopo de Rede](#escopo-de-rede)
       * [Arquitetura de Rede](#arquitetura-de-rede)
       * [Meios Físicos](#meios-físicos)
       * [Diagramas de Rede](#diagramas-de-rede)
       * [Firmware](#firmware)
+        * [Acesso](#acesso)
+        * [Modo de Acesso e Comando](#modo-de-acesso-e-comando)
+        * [Configuração Global](#configuração-global)
+        * [Subconfigurações](#subconfigurações)
+        * [Listar Comandos](#listar-comandos)
+        * [Configurações de Seguraça](#configurações-de-segurança)
+        * [Ligando e Desligando a Interface (Port Status)](#ligando-e-desligando-a-interface--port-status-)
+        * [Configurações de Inicialização](#configurações-de-inicialização)
+        * [Reiniciar o Sistema](#reiniciar-o-sistema)
       * [Endereçamento](#endereçamento)
+        * [Exemplo de Endereçamento de Protocolo](#exemplo-de-endereçamento-de-protocolo)
+        * [Exemplo de Configuração de IP (Padrão THCP)](#exemplo-de-configuração-de-ip--padrão-thcp-)
+        * [Configurando uma SVI (Switch Virtual Interface)](#configurando-uma-svi--switch-virtual-interface-)
 
 <!--te-->
-
+* []()
 
 ## Infraestrutura de Redes
 ### Componentes de Rede
@@ -158,7 +173,7 @@ Switch#
 
 >---
 
-* Configuração Global
+#### **Configuração Global**
 
 ```cmd
 # Entrar no modo de configuração global:
@@ -172,7 +187,7 @@ Switch(config)# exit
 
 >---
 
-* Subconfigurações
+#### **Subconfigurações**
 
 ```cmd
 # Entrar na subconfiguração de linha para a porta do console:
@@ -199,7 +214,7 @@ Switch(config-line)#
 
 >---
 
-* Listar Comandos
+#### **Listar Comandos**
 
 ```cmd
 Switch> ?
@@ -210,7 +225,8 @@ Switch> copy?
 
 >---
 
-* Configurações de Seguraça
+#### **Configurações de Seguraça**
+
 ```cmd
 # Configuração do hostname:
 Switch> enable
@@ -268,17 +284,7 @@ end
 
 >---
 
-* Configurando um IP
-
-```cmd
-Sw-Sala-1# configure terminal
-Sw-Sala-1# interface vlan 1
-Sw-Sala-1# ip adress 192.168.0.20 255.255.255.0
-```
-
->---
-
-* Ligando e Desligando a Interface (Port Status)
+#### **Ligando e Desligando a Interface (Port Status)**
 
 ```cmd
 # Ligando porta ethernet (interface)
@@ -292,7 +298,7 @@ Sw-Sala-1# shutdown
 
 >---
 
-* Configurações de Inicialização
+#### **Configurações de Inicialização**
 
 ```cmd
 # Salvando configurações temporárias na memória
@@ -321,7 +327,7 @@ Sw-Sala-1# erase running-config
 
 >---
 
-* Reiniciar o sistema
+#### **Reiniciar o Sistema**
 
 ```cmd
 Sw-Sala-1# reload
@@ -331,7 +337,7 @@ Sw-Sala-1# reload
 
 ### Endereçamento
 
-<table><thead><tr><th></th><th></th></tr></thead><tbody><tr><td>Protocolo</td><td>Interpreta mensagens em um software</td></tr><tr><td>IP</td><td>Rótulo unitário para protocolo de Internet</td></tr><tr><td>Rede</td><td>Endereçamento base de IP</td></tr><tr><td>Gateway</td><td>Endereço da placa de rede, o IP da porta do roteador</td></tr><tr><td>Máscara de Rede</td><td>Define a quantidade de máquinas e classes</td></tr><tr><td>Broadcast</td><td>Transfere mensages para todos os receptores ao mesmo tempo</td></tr></tbody></table>
+<table><thead><tr><th></th><th></th></tr></thead><tbody><tr><td>Protocolo</td><td>Interpreta mensagens em um software</td></tr><tr><td>IP</td><td>Rótulo unitário para protocolo de Internet</td></tr><tr><td>Rede</td><td>Endereçamento base de IP</td></tr><tr><td>Gateway</td><td>Endereço da placa de rede, o IP da porta do roteador</td></tr><tr><td>Máscara de Rede</td><td>Define a quantidade de máquinas e classes</td></tr><tr><td>Broadcast</td><td>Transfere mensages para todos os receptores ao mesmo tempo</td></tr><tr><td>DHCP</td><td>Configura automaticamente as informações de endereçamento IPv4</td></tr><tr><td>DHCPv6 e SLAAC</td><td>Alocam endereços dinâmicos para Ipv6</td></tr></tbody></table>
 
 >---
 
@@ -340,7 +346,7 @@ Sw-Sala-1# reload
 Protocolo: HTTP  
 Porta: 80
 
-**Usa o protocolo DNS para prover navegação na internet | O protocolo DNS onverte números em `IP's` e `IP's` em números**
+**Usa o protocolo DNS para prover navegação na internet | O protocolo DNS onverte endereços `IP` em nomes de domínio, como `www.github.com`**
 
 1. O cliente/host faz uma solicitação ao `servidor DNS` para saber **qual o endereço correto para requisição**.
 2. O servidor DNS informa o endereço **(número)** para que o cliente possa fazer sua requisição.
@@ -366,7 +372,22 @@ X - 0 |**
 
 ---
 
-#### **Exemplo de Teste de Ping**
+
+
+#### **Configurando uma SVI (Switch Virtual Interface)**
+
+```cmd
+Switch# configure terminal
+Switch(config-if)# interface vlan 1
+Switch(config-if)# ip address 192.168.1.20 255.255.255.0
+Switch(config-if)# no shutdown
+Switch# exit
+Switch(config)# ip default-gateway 192.168.1.1
+```
+
+---
+
+#### **Teste de Ping**
 As máquinas só retornam ping se estiverem na mesma **rede**, por isso a necessidade de um `roteador`.
 
 **1. Obtendo IP dos dispositivos:**
