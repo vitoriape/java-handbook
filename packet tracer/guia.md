@@ -9,8 +9,7 @@
       * [Diagramas de Rede](#diagramas-de-rede)
       * [Firmware](#firmware)
       * [Endereçamento](#endereçamento)
-   * [Estruturas](#estruturas)
-      * [Estrutura Switch-Roteador](#estrutura-switch-roteador)
+
 <!--te-->
 
 
@@ -151,6 +150,17 @@ Switch> enable
 # Retornar ao modo usuário:
 Switch# disable
 
+
+# Retornar para o modo privilegiado:
+Switch(config-line)# end
+Switch#
+```
+
+>---
+
+* Configuração Global
+
+```cmd
 # Entrar no modo de configuração global:
 Switch# configure terminal
 Enter configuration commands, one per line.  End with CNTL/Z.
@@ -158,14 +168,20 @@ Switch(config)#
 
 # Sair do modo de configuração global:
 Switch(config)# exit
+```
 
+>---
+
+* Subconfigurações
+
+```cmd
 # Entrar na subconfiguração de linha para a porta do console:
 Switch> enable
 Switch# configure terminal
 Switch(config)# line console 0
 Switch(config-line)#
 
-# Entrar na subconfiguração de linha VTY:
+# Entrar na subconfiguração de linha VTY, habilitando o uso de prompt de comando:
 Switch> enable
 Switch# configure terminal
 Switch(config)# line vty 0 15
@@ -179,11 +195,20 @@ Switch(config-if)#
 Switch(config)# interface vlan 1
 Switch(config-if)# line console 0
 Switch(config-line)#
-
-# Retornar para o modo privilegiado:
-Switch(config-line)# end
-Switch#
 ```
+
+>---
+
+* Listar Comandos
+
+```cmd
+Switch> ?
+
+# Listar variáveis possíveis para um comando
+Switch> copy?
+```
+
+>---
 
 * Configurações de Seguraça
 ```cmd
@@ -240,11 +265,66 @@ line vty 5 15
 !
 end
 ```
-* Salvando Configurações na Inicialização
+
+>---
+
+* Configurando um IP
 
 ```cmd
+Sw-Sala-1# configure terminal
+Sw-Sala-1# interface vlan 1
+Sw-Sala-1# ip adress 192.168.0.20 255.255.255.0
+```
+
+>---
+
+* Ligando e Desligando a Interface (Port Status)
+
+```cmd
+# Ligando porta ethernet (interface)
+Sw-Sala-1# interface
+Sw-Sala-1# no shutdown
+
+# Desligando interface inativa
+Sw-Sala-1# interface
+Sw-Sala-1# shutdown
+```
+
+>---
+
+* Configurações de Inicialização
+
+```cmd
+# Salvando configurações temporárias na memória
 Sw-Sala-1# copy running-config startup-config
-Sw-Sala-1# show startup-config
+# Opção 2: copy run start
+# Opção 3: wr
+
+# Salvando configurações da NVRAM na memória temporária
+Sw-Sala-1# copy startup-config running-config
+# Opção 2: copy start run
+
+
+# Exibindo configurações
+Sw-Sala-1# show startup-config #NVRAM
+Sw-Sala-1# show running-config #RAM/FLASH
+
+# Exibindo diretórios de configuração
+Sw-Sala-1# dir ?
+Sw-Sala-1# dir nvram
+Sw-Sala-1# dir flash
+
+# Remover configurações salvas na memória
+Sw-Sala-1# erase startup-config
+Sw-Sala-1# erase running-config
+```
+
+>---
+
+* Reiniciar o sistema
+
+```cmd
+Sw-Sala-1# reload
 ```
 
 ---
@@ -326,6 +406,15 @@ Endereço IPv4. . . . . . . .  . . . . . . . : 192.168.0.3
 ```
 
 ---
+
+
+
+
+
+
+
+
+
 
 
 Conectar equipamentos iguais = cabo crossover  
