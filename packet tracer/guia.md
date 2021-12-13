@@ -6,10 +6,15 @@
       * [Tipos de Rede](#tipos-de-rede)
         * [Rede Ponto a Ponto | Peer-to-Peer](#rede-ponto-a-ponto--peer-to-peer)
         * [Rede Cliente-Servidor | Rede Estrela](#rede-cliente-servidor--rede-estrela)
+        * [Malha](#malha)
         * [Escopo de Rede](#escopo-de-rede)
       * [Arquitetura de Rede](#arquitetura-de-rede)
       * [Meios Físicos](#meios-físicos)
+        * [Cabeamento](#cabeamento)
       * [Diagramas de Rede](#diagramas-de-rede)
+        * [Comunicação Duplex](#comunicação-duplex)
+        * [Quadro de Enlace de Dados](#quadro-de-enlace-de-dados)
+        * [Subcamadas de Enlace de Dados  da Ethernet](#subcamadas-de-enlace-de-dados-da-ethernet)
       * [Firmware](#firmware)
         * [Acesso](#acesso)
         * [Modo de Acesso e Comando](#modo-de-acesso-e-comando)
@@ -24,9 +29,12 @@
         * [Exemplo de Endereçamento de Protocolo](#exemplo-de-endereçamento-de-protocolo)
         * [Exemplo de Configuração de IP (Padrão THCP)](#exemplo-de-configuração-de-ip--padrão-thcp-)
         * [Configurando uma SVI (Switch Virtual Interface)](#configurando-uma-svi--switch-virtual-interface-)
-
+        * [Teste de Ping](#teste-de-ping)
+   * [Switches](#switches)
+     * [Métodos de Encaminhamento](#métodos-de-encaminhamento)
 <!--te-->
-* []()
+
+---
 
 ## Infraestrutura de Redes
 ### Componentes de Rede
@@ -58,25 +66,31 @@ Essencialmente, uma rede é composta por dispostivos finais, os `hosts`, os disp
 
 >---
 
+#### Topologia WAN
 #### **Rede Ponto a Ponto | Peer-to-Peer**
-Nela, o protocolo de software de rede **não faz distinção**, e todos os dispositivos são **clientes** e **servidores**. É geralmente usada para compartilhamento de arquivos e impressoras, sendo mais **fácil de configurar** e menos complexa, além de mais barata.
+Ligação permanente entre dois pontos finais. Nela, o protocolo de software de rede **não faz distinção**, e todos os dispositivos são **clientes** e **servidores**. É geralmente usada para compartilhamento de arquivos e impressoras, sendo mais **fácil de configurar** e menos complexa, além de mais barata.
 
-No entanto, sua administração não é centralizada, portanto não é tão **segura**. Também **não é escalável** e acaba sendo **mais lenta**.
+No entanto, sua administração não é centralizada, portanto não é tão **segura**. Também **não é escalável** e acaba sendo **mais lenta**. São também limitadas **a dois nós**.
 
 `_Dispositivos:` Desktop, Laptop, Impressora, Celular, Tablet, Servidor
 
 >**Exemplo:** conexão doméstica entre dois computadores de uma casa
 
----
+>---
 
 #### **Rede Cliente-Servidor | Rede Estrela**
-Composta por mediadores de **host** `(dispositivo final onde as mensagens se originam e são recebidas)`. Provém serviços de rede a partir das requisições dos clientes, tangendo a **infraestrutura** da rede ao promover a troca de mensagens. 
+Possui um site central que interconecta  **sites de filial**. É composta por mediadores de **host** `(dispositivo final onde as mensagens se originam e são recebidas)`. Provém serviços de rede a partir das requisições dos clientes, tangendo a **infraestrutura** da rede ao promover a troca de mensagens. 
 
 `_Dispositivos:` Switch, Router, Firewall, Internet, Cabeamento
 
 >**Exemplo:** conexão de um usuário a um site através de um provedor
 
 >---
+
+#### **Malha**
+Topologia de nós com **alta disponibilidade** na qual cada link é essencialmente um link ponto a ponto para outro nó.  Requer que todos os sistemas finais estejam interconectados a todos os outros sistemas.
+
+---
 
 #### **Escopo de Rede**
 Delimita a Geografia de uma rede, considerando sua extensão física.
@@ -95,7 +109,13 @@ Capacidade de uma rede de se **expandir rapidamente** para suportar novos usuár
 #### **3. Qualidade do Serviço (QoS)**
 Capacidade de uma rede de entregar a **experiência esperada pelo usuário**. Considerando as limitações decorrentes de um **congestionamento de rede**, como atrasos no carregamento de um vídeo ou cortes em uma ligação, uma rede deve ser configurada pensando nas **prioridades dos usuários**.
 
-* **Largura de Banda:** Medida em bits por segundo (`bps`)
+* **Largura de Banda:** Capacidade na qual um meio pode transportar dados, sendo medida em bits por segundo (`bps`) [ ou seja, em kilobits por segundo (`Kbps`), megabits por segundo (`Mbps`) ou gigabits por segundo (`Gbps`) ]. Não se trata de **velocidade**, mas sim da **quantidade** de dados transmitidos.
+
+#### **3.1. Qualidade da Largura de Banda**
+
+* **Latência:** Tempo necessário para os dados viajarem de um ponto a outro, considerando os atrasos.
+* **Taxa de Transferência:** Medida da transferência de bits através da mídia durante um determinado período.
+* **Goodput:** Medida de dados úteis transferidos em um determinado período, sendo sempre menor que a taxa de transferência, que geralmente é menor do que a largura de banda.
 
 #### **4. Segurança**
 Capacidade de segurança da infraestrutura de rede e segurança da informação. Tanto as informações dos **pacotes** e quanto as dos **dispositivos** devem ser protegidas.
@@ -118,6 +138,29 @@ Permitem o deslocamento das mensagens entre os envolvidos em um [diagrama de red
 |             Wireless (sem fio)            	| Modulação de frequências específicas de ondas eletromagnéticas 	|
 |                                           	|                                                                	|
 
+#### Cabeamento
+#### Cabeamento de Cobre
+#### **1. Par Trançado não Blindado (UTP)**
+Meio físico de rede mais comum, usado para interconectar **dispositivos finais** de rede com dispositivos intermediários, como **comutadores** e **roteadores**. Seu cabo termina com conectores RJ-45.
+
+>---
+
+#### **2. Par Trançado Blindado (STP)**
+Também usa o conector RJ-45, porém oferece mais **proteção contra ruídos** e acaba sendo **mais caro** e **mais difícil de instalar** do que o **UTP**.
+
+>---
+
+#### **3. Cabo Coaxial/Coax**
+Possui dois condutores que compartilham o mesmo eixo. Eles conectam **antenas** a **dispositivos sem fio**, transportando a energia de radiofrequência entre as antenas e o equipamento de rádio. Também são parte da infraesturtura de **internet a cabo**, pois a instalação interna (do cliente) é feita com cabos coaxiais.
+
+>---
+
+Conectar equipamentos iguais = cabo crossover  
+Conectar equipamentos diferentes = cabo direto
+
+`Roteador` - `Switch` >> `PC1`  
+---------------------->> `PC2`
+
 ---
 
 ### Diagramas de Rede
@@ -125,7 +168,42 @@ A Topologia de Redes divide-se em **Topologia Física** e **Topologia Lógica**,
 
 * **Topologia Física:** Diz respeito a localização dos dispositivos intermediários e instalação dos cabos. É mais abrangente.
 
+`_Exemplos:` Topologia em Estrela; Topologia de Barramento; Topologia em Estrela Estendida; Topologia em Anel.
+
 * **Topologia Lógica:** Elucida a configuração dos dispositivos, portas e o esquema de [endereçamento](#endereçamento) da rede. É mais detalhada e local.
+
+#### **Comunicação Duplex**
+Diz respeito à direção da transmissão de dados entre dois dispositivos, comumente sendo **half** ou **full**.
+
+* **Comunicação Half-Duplex:** Permite que apenas um dispositivo por vez **envie** ou **receba** na mídia compartilhada, ou seja, ambos os dispositivos podem transmitir e receber no meio físico, **mas não ao mesmo tempo**.
+
+* **Comunicação Full-Duplex:** Ambos os dispositivos podem transmitir e receber simultaneamente na mídia compartilhada.
+
+---
+
+#### **Quadro de Enlace de Dados**
+A Camada de Enlace de Dados, conhecida como Camada 2 ou Camada de Link de Dados, prepara os dados **encapsulados** (geralmente um pacote IPv4 ou IPv6) para o transporte pela mídia local. Além de **dados**, esses quadros possuem basicamente um **cabeçalho** e **trailer**.
+
+* **Cabeçalho:** Início do quadro, contendo o **endereçamento** `[nós de origem e destino]` , o **tipo** `[protocolo da camada 3]` e o **controle** `[qualidade de serviço]`.
+
+* **Pacote:** Carga usável do quadro, os **dados**.
+
+* **Trailer:** Detecção de erros e fim do quadro.
+
+---
+
+#### **Subcamadas de Enlace de Dados da Ethernet**
+A Ethernet, tecnologia LAN de comunicação por fios, é definida por **protocolos de camada física** e de **enlace de dados** `[LLC e MAC]`.
+
+* **Subcamada LLC:** Realiza a tipificação do protocolo de camada de rede em uso no quadro de enlace de dados, permitindo que vários protocolos da camada 3 `[como IPv4 e IPv6]` usem a mesma **interface de rede e mídia**.
+
+`P.S: Faz a comunicação entre o software de rede e o hardware do dispositivo.`
+
+>---
+
+* **Subcamada MAC:** Implementada no **hardware**, sendo responsável pelo **encapsulamento de dados** e pelo **controle de acesso**. 
+
+`P.S: Fornece o endereçamento da camada 2.`
 
 ---
 
@@ -372,8 +450,6 @@ X - 0 |**
 
 ---
 
-
-
 #### **Configurando uma SVI (Switch Virtual Interface)**
 
 ```cmd
@@ -428,18 +504,32 @@ Endereço IPv4. . . . . . . .  . . . . . . . : 192.168.0.3
 
 ---
 
+---
+
+## Switches
+Um switch Ethernet da Camada 2 é um comutador de dados que desconhece completamente os protocolos anexados nos [quadros de enlace de dados](#quadro-de-enlace-de-dados), usando apenas os **endereços MAC** para tomar decisões de encaminhamento.
+
+Ao analisar cada quadro, ele usa como base sua **tabela de endereços MAC**, também chamada de **tabela de memória de conteúdo endereçável** `(CAM)`. 
+
+**P.S_1:** Se o endereço MAC de origem não existe, ele então **é adicionado à tabela** junto ao **número da porta de entrada**. 
+
+**P.S_2:** Caso o endereço MAC de origem não exista na tabela, mas em uma porta diferente, o switch tratará ele como uma nova entrada. A entrada então é substituída usando **o mesmo endereço MAC**, mas com o número de porta mais atual.
+
+---
+
+### Métodos de Encaminhamento
+#### **Switching Store-and-Forward**
+Recebe o quadro inteiro de enlace de dados e calcula o CRC **(método de detecção de erros)**; se o CRC for válido, o switch procura o endereço de destino e, em seguida, o quadro é encaminhado para fora da porta correta.
+
+>---
+
+#### **Switching cut-through**
+Lê pelo menos o endereço de destino do quadro e encaminha o mesmo **antes dele ser totalmente recebido**.
+
+---
 
 
 
 
 
 
-
-
-
-
-Conectar equipamentos iguais = cabo crossover  
-Conectar equipamentos diferentes = cabo direto
-
-`Roteador` - `Switch` >> `PC1`  
----------------------->> `PC2`
