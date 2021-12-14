@@ -2,6 +2,8 @@
 =================
 <!--ts-->
    * [Configurando um Script Jupyter](#configurando-um-script-jupyter)
+     * [Importar pyautogui como variável](#importar-pyautogui-como-variável)
+     * [Importar selenium como variável](#importar-selenium-como-variável)
    * [Operando Mouse](#operando-mouse)
    * [Operando Teclado](#operando-teclado)
    * [Manipulando Aplicações](#manipulando-aplicações)
@@ -10,8 +12,7 @@
 
 
 ### Configurando um Script Jupyter
-
-- **Importar pyautogui como variável**
+#### **Importar pyautogui como variável**
 
 ```jupyter
 !pip install pyautogui
@@ -20,13 +21,17 @@ import pyautogui
 import pyautogui as nomeVariavel
 ```
 
-- **Importar selenium como variável**
+>---
+
+#### **Importar selenium como variável**
 ```jupyter
 !pip install selenium
 from selenium import webdriver
 
 nomeVariavel = webdriver.NomeDoBrowser()
 ```
+
+>---
 
 - **Pausar script da classe (segundos)**
 
@@ -95,6 +100,28 @@ nomeVariavel.press('enter')
 ```jupyter
 novaVariavel = nomeVariavel.getActiveWindow()
 novaVariavel.close()
+```
+
+>---
+
+#### **Abrindo navegador**
+
+>---
+
+#### **Usando campos das aplicações**
+
+```jupyter
+#Encontrando elementos pelo HTML
+nomeVariavel.find_element_by_name("nomeHTML")
+
+#Usando campos de texto
+nomeVariavel.find_element_by_name("campo").send_keys("texto")
+
+#Apertando botões
+nomeVariavel.find_element_by_name("btnSubmit").send_keys(Keys.RETURN)
+
+#Retornando dados
+dadoTexto = nomeVariavel.find_element_by_xpath("scriptpath")[0].text
 ```
 
 ---
