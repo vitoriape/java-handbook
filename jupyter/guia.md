@@ -1,18 +1,22 @@
 Índice
 =================
 <!--ts-->
-   * [Configurando um Script Jupyter](#configurando-um-script-jupyter)
-     * [Importar pyautogui como variável](#importar-pyautogui-como-variável)
-     * [Importar selenium como variável](#importar-selenium-como-variável)
+   * [Instalando Bibliotecas](#instalando-bibliotecas)
+     * [Importar pyautogui](#importar-pyautogui)
+     * [Importar selenium](#importar-selenium)
+     * [Importar xlsxwriter](#importar-xlsxwriter)
+   * [Pausando um Script](#pausando-um-script)
    * [Operando Mouse](#operando-mouse)
    * [Operando Teclado](#operando-teclado)
    * [Manipulando Aplicações](#manipulando-aplicações)
    * [Criando Menus](#criando-menus)
 <!--te-->
 
+---
+---
 
-### Configurando um Script Jupyter
-#### **Importar pyautogui como variável**
+### Instalando Bibliotecas
+#### **Importar pyautogui**
 
 ```jupyter
 !pip install pyautogui
@@ -23,7 +27,7 @@ import pyautogui as nomeVariavel
 
 >---
 
-#### **Importar selenium como variável**
+#### **Importar selenium**
 ```jupyter
 !pip install selenium
 from selenium import webdriver
@@ -33,7 +37,32 @@ nomeVariavel = webdriver.NomeDoBrowser()
 
 >---
 
-- **Pausar script da classe (segundos)**
+#### **Importar xlsxwriter**
+```jupyter
+!pip install xlsxwriter
+
+import xlsxwriter
+import os
+
+#Determina o caminho da planilha
+caminhoArquivo = 'C:\\Users\\PC\\CaminhoPasta\\NomeArquivo.xlsx'
+
+#Define a planilha criada e atribui à ela a biblioteca xlsxwriter
+planilhaCriada = xlsxwriter.Workbook(caminhoArquivo)
+
+#Cria uma nova planilha em branco com o nome sheet1
+sheet1 = planilhaCriada.add_worksheet()
+
+#Seleciona a célula A1 da planilha e escreve Título
+sheet1.write("A1", "Título")
+
+planilhaCriada.close()
+os.startfile(caminhoArquivo)
+```
+
+---
+
+### Pausando um Script
 
 ```jupyter
 nomeVariavel.sleep(4)
