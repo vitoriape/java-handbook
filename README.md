@@ -75,6 +75,9 @@ O desenvolvimento desses códigos de teste utiliza as ferramentas abaixo:
 ### Packet Tracer
 - [Cisco Packet Tracer 8.1.0 FAQ](https://www.netacad.com/sites/default/files/cisco-packet-tracer-faq.pdf)
 
+### Visual Basic for Applications
+- [Excel VBA Reference](https://docs.microsoft.com/en-us/office/vba/api/overview/excel)
+
 ---
 
 ## Features
@@ -85,8 +88,8 @@ O desenvolvimento desses códigos de teste utiliza as ferramentas abaixo:
 - [x] [HTML](./html)
 - [x] [Jupyter](./jupyter)
 - [x] [Packet Tracer](./packet-tracer)
+- [x] [VBA](./vba)
 - [ ] [Python]()
-- [ ] [VBA]()
 
 ## Layout
 
