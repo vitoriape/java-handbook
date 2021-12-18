@@ -55,6 +55,7 @@ O desenvolvimento desses códigos de teste utiliza as ferramentas abaixo:
 - [Java SE Development Kit](https://www.oracle.com/java/technologies/downloads/)
 - [Anaconda Individual Edition](https://www.anaconda.com/products/individual)
 - [Cisco Packet Tracer](https://www.netacad.com/pt-br/courses/packet-tracer)
+- [Excel](https://support.microsoft.com/en-us/excel)
 
 ## References
 ### Git and GitHub
