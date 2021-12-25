@@ -30,10 +30,12 @@
         * [Exemplo de Configuração de IP (Padrão THCP)](#exemplo-de-configuração-de-ip--padrão-thcp-)
         * [Configurando uma SVI (Switch Virtual Interface)](#configurando-uma-svi--switch-virtual-interface-)
         * [Teste de Ping](#teste-de-ping)
+   * [Camadas de Rede](#camadas-de-rede)
    * [Switches](#switches)
      * [Métodos de Encaminhamento](#métodos-de-encaminhamento)
 <!--te-->
 
+---
 ---
 
 ## Infraestrutura de Redes
@@ -54,7 +56,7 @@ Essencialmente, uma rede é composta por dispostivos finais, os `hosts`, os disp
 
 * **Roteador:** Conhecido como Router ou Gateway.
 
->---
+---
 
 ### Tipos de Rede
 
@@ -64,7 +66,7 @@ Essencialmente, uma rede é composta por dispostivos finais, os `hosts`, os disp
   * Para conectar um dispositivo e um provedor, ***a nível doméstico***, podem ser usados cabos, satélites, conexão discada (dial-up), celulares, ou um **DSL** (Digital Subscriber Line), que é uma linha telefônica que transmite dados digitais.
   * Para conectar dispositivos e um provedor, ***a nível corporativo***, pode-se utilizar linhas alugadas dedicadas, **Metro Ethernet**, satélites ou um **DSL Comercial**.
 
->---
+---
 
 #### Topologia WAN
 #### **Rede Ponto a Ponto | Peer-to-Peer**
@@ -76,7 +78,7 @@ No entanto, sua administração não é centralizada, portanto não é tão **se
 
 >**Exemplo:** conexão doméstica entre dois computadores de uma casa
 
->---
+---
 
 #### **Rede Cliente-Servidor | Rede Estrela**
 Possui um site central que interconecta  **sites de filial**. É composta por mediadores de **host** `(dispositivo final onde as mensagens se originam e são recebidas)`. Provém serviços de rede a partir das requisições dos clientes, tangendo a **infraestrutura** da rede ao promover a troca de mensagens. 
@@ -85,7 +87,7 @@ Possui um site central que interconecta  **sites de filial**. É composta por me
 
 >**Exemplo:** conexão de um usuário a um site através de um provedor
 
->---
+---
 
 #### **Malha**
 Topologia de nós com **alta disponibilidade** na qual cada link é essencialmente um link ponto a ponto para outro nó.  Requer que todos os sistemas finais estejam interconectados a todos os outros sistemas.
@@ -143,17 +145,17 @@ Permitem o deslocamento das mensagens entre os envolvidos em um [diagrama de red
 #### **1. Par Trançado não Blindado (UTP)**
 Meio físico de rede mais comum, usado para interconectar **dispositivos finais** de rede com dispositivos intermediários, como **comutadores** e **roteadores**. Seu cabo termina com conectores RJ-45.
 
->---
+---
 
 #### **2. Par Trançado Blindado (STP)**
 Também usa o conector RJ-45, porém oferece mais **proteção contra ruídos** e acaba sendo **mais caro** e **mais difícil de instalar** do que o **UTP**.
 
->---
+---
 
 #### **3. Cabo Coaxial/Coax**
 Possui dois condutores que compartilham o mesmo eixo. Eles conectam **antenas** a **dispositivos sem fio**, transportando a energia de radiofrequência entre as antenas e o equipamento de rádio. Também são parte da infraesturtura de **internet a cabo**, pois a instalação interna (do cliente) é feita com cabos coaxiais.
 
->---
+---
 
 Conectar equipamentos iguais = cabo crossover  
 Conectar equipamentos diferentes = cabo direto
@@ -199,7 +201,7 @@ A Ethernet, tecnologia LAN de comunicação por fios, é definida por **protocol
 
 `P.S: Faz a comunicação entre o software de rede e o hardware do dispositivo.`
 
->---
+---
 
 * **Subcamada MAC:** Implementada no **hardware**, sendo responsável pelo **encapsulamento de dados** e pelo **controle de acesso**. 
 
@@ -216,7 +218,7 @@ O Shell, responsável por se comunicar com o Kernel e oferecer uma interface int
 
 * **CLI:** Interface de solicitações do usuário via linha de comando, a exemplo do **Linux**.
 
->---
+---
 
 #### **Acesso**
 Mesmo equipamentos que não precisam de configuração para operar precisam ser configurados e protegidos, seja via **Console**, **Secure Shell (SSH)**, **Telnet** ou até por uma porta **AUX**.
@@ -229,7 +231,7 @@ Mesmo equipamentos que não precisam de configuração para operar precisam ser 
 
 * **AUX:** Estabelece uma **CLI** remotamente por uma conexão telefônica com o uso de um **modem**.
 
->---
+---
 
 #### **Modo de Acesso e Comando**
 O gerenciamento de um dispositivo de rede pode ser feito em **modo usuário** e **modo privilegiado**. Apenas útil para operações básicas, o modo usuário é representado por uma `>`, enquanto o modo privilegiado por um `#`.
@@ -249,7 +251,7 @@ Switch(config-line)# end
 Switch#
 ```
 
->---
+---
 
 #### **Configuração Global**
 
@@ -263,7 +265,7 @@ Switch(config)#
 Switch(config)# exit
 ```
 
->---
+---
 
 #### **Subconfigurações**
 
@@ -290,7 +292,7 @@ Switch(config-if)# line console 0
 Switch(config-line)#
 ```
 
->---
+---
 
 #### **Listar Comandos**
 
@@ -301,7 +303,7 @@ Switch> ?
 Switch> copy?
 ```
 
->---
+---
 
 #### **Configurações de Seguraça**
 
@@ -360,7 +362,7 @@ line vty 5 15
 end
 ```
 
->---
+---
 
 #### **Ligando e Desligando a Interface (Port Status)**
 
@@ -374,7 +376,7 @@ Sw-Sala-1# interface
 Sw-Sala-1# shutdown
 ```
 
->---
+---
 
 #### **Configurações de Inicialização**
 
@@ -403,7 +405,7 @@ Sw-Sala-1# erase startup-config
 Sw-Sala-1# erase running-config
 ```
 
->---
+---
 
 #### **Reiniciar o Sistema**
 
@@ -417,7 +419,7 @@ Sw-Sala-1# reload
 
 <table><thead><tr><th></th><th></th></tr></thead><tbody><tr><td>Protocolo</td><td>Interpreta mensagens em um software</td></tr><tr><td>IP</td><td>Rótulo unitário para protocolo de Internet</td></tr><tr><td>Endereço IP</td><td>Endereço lógico da Camada de Rede (Camada 3)</td></tr><tr><td>Rede</td><td>Endereçamento base de IP</td></tr><tr><td>Gateway</td><td>Endereço da placa de rede, o IP da porta do roteador</td></tr><tr><td>Máscara de Rede</td><td>Define a quantidade de máquinas e classes</td></tr><tr><td>Broadcast</td><td>Transfere mensages para todos os receptores ao mesmo tempo</td></tr><tr><td>DHCPv4</td><td>Configura automaticamente as informações de endereçamento IPv4</td></tr><tr><td>DHCPv6</td><td>Alocam endereços dinâmicos para Ipv6</td></tr><tr><td>SLAAC</td><td>Configuração automática de endereço sem estado</td></tr></tbody></table>
 
->---
+---
 
 #### **Exemplo de Funcionamento de Protocolo**
 
@@ -430,7 +432,7 @@ Porta: 80
 2. O servidor DNS informa o endereço **(número)** para que o cliente possa fazer sua requisição.
 3. O host usa o número informado para criar **requisições** para o servidor **(domínio e afins)**.
 
->---
+---
 
 #### **Exemplo de Configuração de IP (Padrão THCP)**
 
@@ -492,7 +494,7 @@ Adaptador Ethernet Ethernet:
 Endereço IPv4. . . . . . . .  . . . . . . . : 192.168.0.3 
 ```
 
->****
+---
 
 **2. Testando o ping entre os dispositivos** 
 
@@ -503,7 +505,13 @@ Endereço IPv4. . . . . . . .  . . . . . . . : 192.168.0.3
 ```
 
 ---
+---
 
+## Camadas de Rede
+### 7 - Aplicação
+
+
+---
 ---
 
 ## Switches
