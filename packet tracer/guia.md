@@ -10,6 +10,7 @@
         * [Escopo de Rede](#escopo-de-rede)
       * [Arquitetura de Rede](#arquitetura-de-rede)
       * [Meios Físicos](#meios-físicos)
+        * [Ethernet](#ethernet)
         * [Cabeamento](#cabeamento)
       * [Diagramas de Rede](#diagramas-de-rede)
         * [Comunicação Duplex](#comunicação-duplex)
@@ -23,6 +24,8 @@
         * [Listar Comandos](#listar-comandos)
         * [Configurações de Seguraça](#configurações-de-segurança)
         * [Ligando e Desligando a Interface (Port Status)](#ligando-e-desligando-a-interface--port-status-)
+        * [Configurar Interface do Roteador](#configurar-interface-do-roteador)
+        * [Configurar Gateway Padrão](#configurar-gateway-padrão)
         * [Configurações de Inicialização](#configurações-de-inicialização)
         * [Reiniciar o Sistema](#reiniciar-o-sistema)
       * [Endereçamento](#endereçamento)
@@ -31,6 +34,14 @@
         * [Configurando uma SVI (Switch Virtual Interface)](#configurando-uma-svi--switch-virtual-interface-)
         * [Teste de Ping](#teste-de-ping)
    * [Camadas de Rede](#camadas-de-rede)
+     * [7 - Aplicação](#7---aplicação)
+     * [6 - Apresentação](#6---aplicação)
+     * [5 - Sessão](#5---sessão)
+     * [4 - Transporte](#4---transporte)
+     * [3 - Rede](#3---rede)
+     * [2 - Enlace de Dados](#2---enlace-de-dados)
+     * [1 - Física](#1---física)
+     * [Unidade de Dados de Protocolo](#unidade-de-dados-de-protocolo)
    * [Switches](#switches)
      * [Métodos de Encaminhamento](#métodos-de-encaminhamento)
 <!--te-->
@@ -139,6 +150,11 @@ Permitem o deslocamento das mensagens entre os envolvidos em um [diagrama de red
 | Fibra óptica com fibras de vidro/plástico 	|                          Pulsos de luz                         	|
 |             Wireless (sem fio)            	| Modulação de frequências específicas de ondas eletromagnéticas 	|
 |                                           	|                                                                	|
+
+#### Ethernet
+Definida por dois protocolos de camada física e de camada de enlace de dados.
+
+---
 
 #### Cabeamento
 #### Cabeamento de Cobre
@@ -329,7 +345,10 @@ Sw-Sala-1# configure terminal
 Sw-Sala-1(config)# line vty 0 15
 Sw-Sala-1(config-line)# password xoblau 
 Sw-Sala-1(config-line)# login 
-Sw-Sala-1(config-line)# end
+
+# Habilitar o acesso SSH e Telnet
+Sw-Sala-1(config-line)# transport input ssh telnet
+Sw-Sala-1(config-line)# exit
 
 # Criptografando senhas:
 Sw-Sala-1# configure terminal
@@ -337,7 +356,7 @@ Sw-Sala-1(config)# service password-encryption
 
 # Adicionando um banner de aviso:
 Sw-Sala-1#configure terminal
-Sw-Sala-1(config)#banner motd # mensagem #
+Sw-Sala-1(config)#banner motd #mensagem#
 
 # Exibindo resultados:
 Sw-Sala-1(config)# end
@@ -365,7 +384,6 @@ end
 ---
 
 #### **Ligando e Desligando a Interface (Port Status)**
-
 ```cmd
 # Ligando porta ethernet (interface)
 Sw-Sala-1# interface
@@ -378,8 +396,72 @@ Sw-Sala-1# shutdown
 
 ---
 
-#### **Configurações de Inicialização**
+#### **Configurar Interface do Roteador**
+```cmd
+# Primeira interface
+R1> enable
+R1# configure terminal
 
+# Estrutura: interface type-and-number
+R1# interface gigabitethernet 0/0/0
+
+# Estrutura: description description-text
+R1(config-if)# description Link to LAN
+
+# Estrutura: ip address ipv4-address subnet-mask
+R1(config-if)# ip address 192.168.10.1 255.255.255.0
+
+# Estrutura: ipv6 address ipv6-address/prefix-length
+R1(config-if)# ipv6 address 2001:db8:acad:10::1/64
+
+# Ligar porta ethernet
+R1(config-if)# interface
+R1(config-if)# no shutdown
+R1(config-if)# exit
+###########################
+
+# Segunda interface
+R1(config)# interface gigabitethernet 0/0/1
+R1(config-if)# description Link to R2
+R1(config-if)# ip address 209.165.200.225 255.255.255.252
+R1(config-if)# ipv6 address 2001:db8:feed:224::1/64
+R1(config-if)# no shutdown
+R1(config-if)# exit
+###########################
+
+# Verificação
+# Exibe todas as interfaces, endereços IP e seus status
+R1# show ip interface brief
+R1# show ipv6 interface 
+
+# Exibe as tabelas de IP na RAM
+R1# show ip route
+R1# show ipv6 
+
+# Estatísticas das interfaces de endereçamento IPv4
+R1# show interfaces gig0/0/0
+
+# Estatísticas do IPv4 para todas as interfaces do roteador
+R1# show ip interfaces g0/0/0
+
+# Estatísticas do IPv6 para todas as interfaces do roteador
+R1# show ipv6 interfaces g0/0/0
+
+# Exibe a tabela ARP
+show ip arp
+```
+
+---
+
+#### **Configurar Gateway Padrão**
+```cmd
+S1# configure terminal
+S1(config)#   ip default-gateway 192.168.10.1
+```
+
+---
+
+#### **Configurações de Inicialização**
 ```cmd
 # Salvando configurações temporárias na memória
 Sw-Sala-1# copy running-config startup-config
@@ -509,7 +591,76 @@ Endereço IPv4. . . . . . . .  . . . . . . . : 192.168.0.3
 
 ## Camadas de Rede
 ### 7 - Aplicação
+Processos de rede para aplicações.
 
+---
+
+### 6 - Apresentação
+Representação de dados.
+
+---
+
+### 5 - Sessão
+Comunicação entre hosts.
+
+---
+
+### 4 - Transporte
+Conexão ponto a ponto.
+
+---
+
+### 3 - Rede
+Endereço e melhor caminho. Responsável pelos Protocolos de Internet (IPv4 e IPv6).
+
+---
+
+### 2 - Enlace de Dados
+Acesso aos meios. Prepara os dados de rede para a rede física.
+
+---
+
+### 1 - Física
+Transmissão binária.
+
+---
+
+### Unidade de Dados de Protocolo
+Uma Unidade de Dados de Protocolo **(PDU)** é transmitida entre hosts na seguinte ordem:
+
+* **1º** Os Dados originados em um dispositivo de IP 192.168.32.11 viajam da camada **7 (Aplicação)** até a camada **4 (Transporte)** 
+
+* **(Camada 4)** Os Dados são **encapsulados** e se transformam em **Segmentos**
+
+* **2º** Esses Segmentos são enviados para a camada **3 (Rede)** 
+
+* **(Camada 3)** Os Segmentos são novamente encapsulados, transformando-se em um **Pacote**
+
+* **3º** O Pacote viaja para a camada **2 (Enlace de Dados)**
+
+* **(Camada 2)** O Pacote é encapsulado e torna-se um **Quadro**
+
+* **4º** O Quadro é mandado para a camada **1 (Física)**
+
+* **(Camada 1)** Converte-se o Quadro em uma representação **binária**
+
+* **5º** A **transmissão binária** é realizada através do **roteamento** até a camada **1 (Física)** de um outro dispositivo de IP 192.168.36.5
+
+* **(Camada 1)** Os binários são convertidos novamente em um **Quadro**
+
+* **6º** O Quadro é enviado para a camada **2 (Enlace de Dados)**
+
+* **(Camada 2)** O Quadro é desencapsulado e convertido em **Pacote**
+
+* **7º** O Pacote então é mandado para a camada **3 (Rede)**
+
+* **(Camada 3)** Novamente desencapsulado, o Pacote torna-se **Segmento**
+
+* **8º** O Segmento viaja para a camada **4 (Transporte)** 
+
+* **(Camada 4)** Desencapsulado, o Segmento transforma-se novamente em **Dados**
+
+* **9º** Os Dados vão da camada **4 (Transporte)** até a camada **7 (Aplicação)** do host receptor
 
 ---
 ---
