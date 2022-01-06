@@ -28,12 +28,16 @@ Guia Jupyter Notebook
    * [Automatizando Excel](#automatizando-excel)
      * [Instalar xlsxwriter](#instalar-xlsxwriter)
      * [Instalar openpyxl](#instalar-openpyxl)
+     * [Inserindo Dados](#inserindo-dados)
      * [Loops](#loops)
      * [Selecionar Aba da Planilha](#selecionar-aba-da-planilha)
      * [Encontrar Célula Vazia](#encontrar-célula-vazia)
      * [Salvar Planilha e Abrir](#salvar-planilha-e-abrir)
-
      * [Indexando Dados](#indexando-dados)
+     * [Alterações Gráficas](#alterações-gráficas)
+     * [Inserindo Fórmulas](#inserindo-fórmulas)
+     * [Inserindo Imagens](#inserindo-imagens)
+     * [Formatação Condicional](#formatação-condicional)
 <!--te-->
 
 ---
@@ -192,14 +196,14 @@ Para gravar e formatar dados no Excel, usa-se a biblioteca `xlsxwriter`, e para 
 ```jupyter
 !pip install xlsxwriter
 
-import xlsxwriter
+import xlsxwriter as xlsxwriterScript
 import os
 
 #Determina o caminho da planilha
 caminhoArquivo = 'C:\\Users\\PC\\CaminhoPasta\\NomeArquivo.xlsx'
 
 #Define a planilha criada e atribui à ela a biblioteca xlsxwriter
-planilhaCriada = xlsxwriter.Workbook(caminhoArquivo)
+planilhaCriada = xlsxwriterScript.Workbook(caminhoArquivo)
 
 #Cria uma nova planilha em branco com o nome sheet1
 sheet1 = planilhaCriada.add_worksheet()
@@ -227,6 +231,21 @@ planilhaSelecionada = load_workbook(caminhoArquivo)
 
 #Seleciona a aba AbaDaPlanilha da planilha NomePlanilha -> planilhaSelecionada
 abaSelecionada = planilhaSelecionada['AbaDaPlanilha']
+```
+
+---
+
+### **Inserindo Dados**
+```jupyter
+insereDados = [
+      ["Coluna 1", "Coluna 2", "Coluna 3", "Coluna 4"],
+      [15, 20, 55, 75],
+      [80, 90, 35, 45],
+]  
+
+#A partir da terceira linha (2,) e segunda coluna (1,) insere os dados linha por linha da variável insereDados
+for linha, range in enumerate(insereDados):
+    abaPlanilha.write_row(linha + 2, 1, range)
 ```
 
 ---
@@ -307,6 +326,185 @@ abaPlanilha[colunaA] = variavelDado1
 abaPlanilha[colunaB] = variavelDado2
 abaPlanilha[colunaC] = variavelDado3
 abaPlanilha[colunaD] = variavelDado4
+```
+
+---
+
+### **Alterações Gráficas**
+```jupyter
+import xlsxwriter as xlsxwriterScript
+
+caminhoArquivo = 'C:\\Users\\PC\\CaminhoPasta\\NomeArquivo.xlsx'
+planilhaSelecionada = xlsxwriterScript.Workbook(caminhoArquivo)
+abaPlanilha = planilhaSelecionada.add_worksheet()
+
+
+#Delimitando a cor de fundo
+corFundo = planilhaSelecionada.add_format({'fg_color':'yellow'})
+
+#Delimitando a cor da fonte
+corFonte = planilhaSelecionada.add_format()
+corFonte.set_format_color('blue')
+
+#Adicionando na planilha
+abaPlanilha.write("A1", "Célula colorida", corFundo)
+abaPlanilha.write("A2", "Frase colorida", corFonte)
+
+#Configurações avançadas
+configSheet = planilhaSelecionada.add_format({
+              #Centralizar vertical:
+              'valign' : 'vcenter',
+
+              #Centralizar horizontal:
+              'align' : 'center',
+
+              #Tamanho da borda:
+              'border' : 6,
+
+              #Cor da fonte:
+              'font_color' : '#99ffff',
+
+              #Negrito:
+              'bold' : True,       
+
+              #Tamanho da fonte:    
+              'size' : 30,
+
+              #Cor da célula (bg_color):     
+              'fg_color' : 'navy'})     
+
+abaPlanilha.write("A3", "Célula configurada", configSheet)
+
+#Tamanho das colunas = 15cm
+abaPlanilha.set_column('A:C', 15)
+
+#Mesclando células
+abaPlanilha.merge_range('B1:B2', 'Célula mesclada', configSheet)
+```
+
+---
+
+### **Inserindo Fórmulas**
+```jupyter
+abaPlanilha.write("A1", "Coluna 1")
+abaPlanilha.write("A2", 10)
+abaPlanilha.write("A3", 20)
+abaPlanilha.write("A4", "Concatenando")
+
+abaPlanilha.write("B1", "Coluna 2")
+abaPlanilha.write("B2", 40)
+abaPlanilha.write("B3", 50)
+abaPlanilha.write("B4", "Dados")
+
+abaPlanilha.write_formula("C1", "Resultado")
+abaPlanilha.write_formula("C2", "=SOMA(A2,B2)")
+abaPlanilha.write_formula("C3", "=B3*A3")
+abaPlanilha.write_formula("C4", '=CONCATENATE(A4," ",B4)')
+```
+
+---
+
+### **Inserindo Imagens**
+```jupyter
+import xlsxwriter as xlsxwriterScript
+
+caminhoArquivo = 'C:\\Users\\PC\\CaminhoPasta\\NomeArquivo.xlsx'
+planilhaSelecionada = xlsxwriterScript.Workbook(caminhoArquivo)
+abaPlanilha = planilhaSelecionada.add_worksheet()
+
+#Insere a imagem na célula B5
+abaPlanilha.insert_image('B5', 'C:\\Users\\PC\\CaminhoPasta\\nomeArquivo.png')
+```
+
+---
+
+### **Formatação Condicional**
+
+- **Com Cores**
+```jupyter
+import xlsxwriter as xlsxwriterScript
+
+caminhoArquivo = 'C:\\Users\\PC\\CaminhoPasta\\NomeArquivo.xlsx'
+planilhaSelecionada = xlsxwriterScript.Workbook(caminhoArquivo)
+abaPlanilha = planilhaSelecionada.add_worksheet()
+
+formatoMaior50 = planilhaSelecionada.add_format({
+                'bg_color' : 'green',
+                'font_color' : 'white'})
+
+formatoMenor50 = planilhaSelecionada.add_format({
+                'bg_color' : 'red',
+                'font_color' : 'white'})   
+
+
+insereDados = [
+      ["Coluna 1", "Coluna 2", "Coluna 3", "Coluna 4"],
+      [15, 20, 55, 75],
+      [80, 90, 35, 45],
+      [31, 41, 59, 79],
+      [59, 59, 11, 21],
+]  
+
+#A partir da terceira linha (2,) e segunda coluna (1,) insere os dados linha por linha da variável insereDados
+for linha, range in enumerate(insereDados):
+    abaPlanilha.write_row(linha + 2, 1, range)
+
+abaPlanilha.conditional_format('B4:E7', {
+                              'type' : 'cell', 
+                              'criteria' : '>=',
+                              'value' : 50,
+                              'format' : formatoMaior50})
+                          
+abaPlanilha.conditional_format('B4:E7', {
+                              'type' : 'cell',
+                              'criteria' : '<',
+                              'value' : 50,
+                              'format' : formatoMenor50})
+```
+
+---
+
+- **Com Ícones**
+```jupyter
+import xlsxwriter as xlsxwriterScript
+
+caminhoArquivo = 'C:\\Users\\PC\\CaminhoPasta\\NomeArquivo.xlsx'
+planilhaSelecionada = xlsxwriterScript.Workbook(caminhoArquivo)
+abaPlanilha = planilhaSelecionada.add_worksheet()
+
+insereDados = [
+      ["Coluna 1", "Coluna 2", "Coluna 3", "Coluna 4"],
+      [15, 20, 55, 75],
+      [80, 90, 35, 45],
+      [31, 41, 59, 79],
+      [59, 59, 11, 21],
+      [13, 23, 58, 78],
+]  
+
+#A partir da terceira linha (2,) e segunda coluna (1,) insere os dados linha por linha da variável insereDados
+for linha, range in enumerate(insereDados):
+    abaPlanilha.write_row(linha + 2, 1, range)
+
+abaPlanilha.conditional_format('B4:E4', {
+                              'type' : 'icon_set', 
+                              'icon_style' : '3_traffic_lights'})
+
+abaPlanilha.conditional_format('B5:E5', {
+                              'type' : 'icon_set',
+                              'icon_style' : '3_traffic_lights',
+                              'reverse_icons' : True})
+
+abaPlanilha.conditional_format('B6:E6', {
+                              'type' : 'icon_set',
+                              'icon_style' : '3_arrows'})
+
+abaPlanilha.conditional_format('B7:E7', {
+                              'type' : 'icon_set',
+                              'icon_style' : '4_arrows'})
+
+abaPlanilha.conditional_format('B8:E8', {
+                              'type' : 'icon_set', 
+                              'icon_style' : '5_ratings'})
 ```
 
 ---
