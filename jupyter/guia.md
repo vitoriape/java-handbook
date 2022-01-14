@@ -38,6 +38,7 @@ Guia Jupyter Notebook
      * [Inserindo Fórmulas](#inserindo-fórmulas)
      * [Inserindo Imagens](#inserindo-imagens)
      * [Formatação Condicional](#formatação-condicional)
+     * [Criando Gráficos](#criando-gráficos)
 <!--te-->
 
 ---
@@ -505,6 +506,91 @@ abaPlanilha.conditional_format('B7:E7', {
 abaPlanilha.conditional_format('B8:E8', {
                               'type' : 'icon_set', 
                               'icon_style' : '5_ratings'})
+```
+---
+
+### **Criando Gráficos**
+
+- **Gráficos de Colunas**
+```jupyter
+import xlsxwriter as xlsxwriterScript
+
+caminhoArquivo = 'C:\\Users\\PC\\CaminhoPasta\\NomeArquivo.xlsx'
+planilhaSelecionada = xlsxwriterScript.Workbook(caminhoArquivo)
+guiaPlanilha = planilhaSelecionada.add_worksheet("Resumo")
+
+# Inserindo dados
+cabeçalho = ['Corretores', 'Comissões']
+valores = [
+  ["Roberta", "Bianca", "Roberval", "Matheus", "Diva"],
+  ["R$ 500,00", "R$ 1.500,00", "R$5.000,00", "R$750,00", "R$2.500,00"]
+]
+
+guiaPlanilha.write_row('A1', cabeçalho)
+guiaPlanilha.write_column('A2', valores[0])
+guiaPlanilha.write_column('B2', valores[1])
+
+# Criando o gráfico
+graficoColunas = planilhaSelecionada.add_chart({'type' : 'column'})
+
+# Configuração das séries
+graficoColunas.add_series({
+    'name' : '=Resumo!$B$1',
+    'categories' : '=Resumo!$A$2:$A$7',
+    'values' : '=Resumo!$A$2:$B$7',
+})
+
+# Definindo eixos
+graficoColunas.set_title({'name' : 'Relatório de Comissões'})
+graficoColunas.set_x_axis({'name' : 'Corretores'})
+graficoColunas.set_y_axis({'name' : 'Comissões'})
+
+# Delimitando o estilo
+graficoColunas.set_style(11)
+
+# Inserindo gráfico com deslocamento x e y
+guiaPlanilha.insert_chart('D2', graficoColunas, {'x_offset' : 25, 'y_offset': 10})
+```
+
+- **Gráficos de Colunas**
+```jupyter
+import xlsxwriter as xlsxwriterScript
+
+caminhoArquivo = 'C:\\Users\\PC\\CaminhoPasta\\NomeArquivo.xlsx'
+planilhaSelecionada = xlsxwriterScript.Workbook(caminhoArquivo)
+guiaPlanilha = planilhaSelecionada.add_worksheet("Resumo")
+
+# Inserindo dados
+cabeçalho = ['Corretores', 'Comissões']
+valores = [
+  ["Roberta", "Bianca", "Roberval", "Matheus", "Diva"],
+  ["R$ 500,00", "R$ 1.500,00", "R$5.000,00", "R$750,00", "R$2.500,00"]
+]
+
+guiaPlanilha.write_row('A1', cabeçalho)
+guiaPlanilha.write_column('A2', valores[0])
+guiaPlanilha.write_column('B2', valores[1])
+
+# Criando o gráfico
+graficoEmpilhado = planilhaSelecionada.add_chart({'type' : 'area', 'subtype' : 'stacked'})
+
+# Configuração das séries
+graficoEmpilhado.add_series({
+    'name' : '=Resumo!$B$1',
+    'categories' : '=Resumo!$A$2:$A$7',
+    'values' : '=Resumo!$A$2:$B$7',
+})
+
+# Definindo eixos
+graficoEmpilhado.set_title({'name' : 'Relatório de Comissões 2'})
+graficoEmpilhado.set_x_axis({'name' : 'Corretores'})
+graficoEmpilhado.set_y_axis({'name' : 'Comissões'})
+
+# Delimitando o estilo
+graficoEmpilhado.set_style(12)
+
+# Inserindo gráfico com deslocamento x e y
+guiaPlanilha.insert_chart('L2', graficoEmpilhado, {'x_offset' : 25, 'y_offset': 10})
 ```
 
 ---
