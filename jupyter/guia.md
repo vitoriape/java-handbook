@@ -33,12 +33,18 @@ Guia Jupyter Notebook
      * [Selecionar Aba da Planilha](#selecionar-aba-da-planilha)
      * [Encontrar Célula Vazia](#encontrar-célula-vazia)
      * [Salvar Planilha e Abrir](#salvar-planilha-e-abrir)
+     * [Deletando Linhas e Colunas](#deletando-linhas-e-colunas)
+     
      * [Indexando Dados](#indexando-dados)
+     * [Manipulando Dados Entre Planilhas](#manipulando-dados-entre-planilhas)
      * [Alterações Gráficas](#alterações-gráficas)
      * [Inserindo Fórmulas](#inserindo-fórmulas)
      * [Inserindo Imagens](#inserindo-imagens)
      * [Formatação Condicional](#formatação-condicional)
      * [Criando Gráficos](#criando-gráficos)
+     * [Criando Resumos](#criando-resumos)
+     
+   * [Manipulando Outlook](#manipulando-outlook)
 <!--te-->
 
 ---
@@ -230,6 +236,9 @@ caminhoArquivo = 'C:\\Users\\PC\\NomePlanilha.xlsx'
 #Define o objeto planilhaSelecionada como abertura da planilha no caminho caminhoArquivo
 planilhaSelecionada = load_workbook(caminhoArquivo)
 
+#Também pode ser
+planilhaSelecionada = load_workbook(filename=caminhoArquivo)
+
 #Seleciona a aba AbaDaPlanilha da planilha NomePlanilha -> planilhaSelecionada
 abaSelecionada = planilhaSelecionada['AbaDaPlanilha']
 ```
@@ -247,6 +256,11 @@ insereDados = [
 #A partir da terceira linha (2,) e segunda coluna (1,) insere os dados linha por linha da variável insereDados
 for linha, range in enumerate(insereDados):
     abaPlanilha.write_row(linha + 2, 1, range)
+    
+#Usando Append
+for linha in insereDados:
+caminho_planilha.append(linha)
+
 ```
 
 ---
@@ -301,6 +315,14 @@ os.startfile(caminhoArquivo)
 
 ---
 
+### **Deletando Linhas e Colunas**
+```jupyter
+sheet_selecionada.delete_rows(1)#Deleta a primeira linha
+sheet_selecionada.delete_cols(2)#Deleta a segunda coluna
+```
+
+---
+
 ### **Indexando Dados**
 ```jupyter
 #Dando refresh na página com Enter
@@ -331,9 +353,42 @@ abaPlanilha[colunaD] = variavelDado4
 
 ---
 
+### **Manipulando Dados Entre Planilhas**
+```jupyter
+from openpyxl import load_workbook
+from openpyxl import Workbook
+
+CaminhoArquivoDados = "C:\\Users\\PC\\Caminho\\Arquivo.xlsx"
+PlanilhaDados = load_workbook(filename=CaminhoArquivoDados)
+GuiaDados = PlanilhaDados['Data']
+
+CriaNovoArquivo = Workbook()
+NovaPlanilha = CriaNovoArquivo.active
+
+for linha in range(1, len(GuiaDados['A']) + 1):
+    for coluna in range (1, 10):
+        NovaPlanilha.cell(row=linha, column=coluna).value = GuiaDados.cell(row=linha, column=coluna).value
+        
+NovaPlanilha.title = 'Employment Data'
+CriaNovoArquivo.create_sheet('Resume')
+SelecionaNovaGuia = CriaNovoArquivo['Resume']
+SelecionaNovaGuia['A1'] = "Título1"
+SelecionaNovaGuia['B1'] = "Título2"
+
+CaminhoNovaPlanilha = "C:\\Users\\PC\\Caminho\\NovoArquivo.xlsx"
+CriaNovoArquivo.save(filename=CaminhoNovaPlanilha)
+
+```
+
+---
+
 ### **Alterações Gráficas**
 ```jupyter
 import xlsxwriter as xlsxwriterScript
+
+from openpyxl.styles import Color, PatternFill, Font, Border, Side
+from openpyxl.styles import Colors
+from openpyxl.cell import Cell
 
 caminhoArquivo = 'C:\\Users\\PC\\CaminhoPasta\\NomeArquivo.xlsx'
 planilhaSelecionada = xlsxwriterScript.Workbook(caminhoArquivo)
@@ -342,6 +397,23 @@ abaPlanilha = planilhaSelecionada.add_worksheet()
 
 #Delimitando a cor de fundo
 corFundo = planilhaSelecionada.add_format({'fg_color':'yellow'})
+
+#Delimitando a cor de fundo - com openpyxl
+corTitulo = PatternFill(start_color='00FFFF00',
+                        end_color='00FFFF00',
+                        fill_type='solid')
+                        
+corCelula = PatternFill(start_color='00FFFF00',
+                        end_color='00FFFF00',
+                        fill_type='solid')
+                        
+abaPlanilha['A1'].fill = corTitulo
+
+for linha in range(2, len(abaPlanilha['A']) + 1):
+
+    celulaColunaA = "A" + str(linha)
+    
+    abaPlanilha[celulaColunaA].fill = corCelula
 
 #Delimitando a cor da fonte
 corFonte = planilhaSelecionada.add_format()
@@ -398,9 +470,13 @@ abaPlanilha.write("B3", 50)
 abaPlanilha.write("B4", "Dados")
 
 abaPlanilha.write_formula("C1", "Resultado")
-abaPlanilha.write_formula("C2", "=SOMA(A2,B2)")
+abaPlanilha.write_formula("C2", "=SUM(A2,B2)")
 abaPlanilha.write_formula("C3", "=B3*A3")
 abaPlanilha.write_formula("C4", '=CONCATENATE(A4," ",B4)')
+
+#Com openpyxl
+abaPlanilha['C2'] = "=SUM(A2:B2)"
+abaPlanilha['B12'] = "=MID(A12; 1; 3)"
 ```
 
 ---
@@ -594,4 +670,31 @@ guiaPlanilha.insert_chart('L2', graficoEmpilhado, {'x_offset' : 25, 'y_offset': 
 ```
 
 ---
+
+### **Criando Resumos**
+```jupyter
+somarVendedor1 = 0
+somarVendedor2 = 0
+
+for linha in range(2, len(sheet_vendas['A']) + 1):
+
+    if sheet_vendas['A%s' % linha].value == "Vendedor1":
+        somarVendedor1 = somarVendedor1 + sheet_vendas['C%s' % linha].value
+        
+    elif sheet_vendas['A%s' % linha].value == "Vendedor2":
+        somarVendedor2 = somarVendedor2 + sheet_vendas['C%s' % linha].value
+        
+sheet_resumo = sheet_vendas.create_sheet(title="Resumo")
+
+sheet_resumo['A1'] = "Vendedores"
+sheet_resumo['B1'] = "Vendas"
+sheet_resumo['A2'] = "Vendedor1"
+sheet_resumo['B2'] = somarVendedor1
+sheet_resumo['A3'] = "Vendedor2"
+sheet_resumo['B3'] = somarVendedor2
+```
+
 ---
+---
+
+# **Manipulando Outlook**
