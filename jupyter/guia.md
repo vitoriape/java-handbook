@@ -45,6 +45,8 @@ Guia Jupyter Notebook
      * [Criando Resumos](#criando-resumos)
      
    * [Manipulando Outlook](#manipulando-outlook)
+       * [Instalando win32](#instalar-win32)
+       * [Disparando Email com Anexo](#disparando-email-com-anexo)
 <!--te-->
 
 ---
@@ -697,4 +699,18 @@ sheet_resumo['B3'] = somarVendedor2
 ---
 ---
 
-# **Manipulando Outlook**
+## **Manipulando Outlook**
+### **Instalando win32**
+```jupyter
+!pip install pypiwin32
+import win32com.client as win32
+``` 
+           
+### **Disparando Email com Anexo**
+```jupyter
+
+``` 
+		   
+---
+---
+		   
