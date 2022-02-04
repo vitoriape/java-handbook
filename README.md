@@ -143,7 +143,7 @@ $ cd algorithm-quickstart
 
 # Dica: utilize os guias introdutórios para cada linguagem/ferramenta
 $ cd java
-$ start guia.md
+$ start README.md
 ```
 
 ---
