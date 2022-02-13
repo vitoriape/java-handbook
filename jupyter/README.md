@@ -1,4 +1,4 @@
-Guia Jupyter Notebook
+Guia Jupyter
 =================
 <!--ts-->
    * [Criando Menus](#criando-menus)

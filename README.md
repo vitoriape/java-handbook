@@ -53,9 +53,12 @@ O desenvolvimento desses códigos de teste utiliza as ferramentas abaixo:
 - [Visual Studio Code](https://code.visualstudio.com/docs)
 - [IntelliJ IDEA](https://www.jetbrains.com/pt-br/idea/resources/)
 - [Java SE Development Kit](https://www.oracle.com/java/technologies/downloads/)
-- [Anaconda Individual Edition](https://www.anaconda.com/products/individual)
-- [Cisco Packet Tracer](https://www.netacad.com/pt-br/courses/packet-tracer)
-- [Excel](https://support.microsoft.com/en-us/excel)
+- [Anaconda 3 2021.11](https://www.anaconda.com/products/individual)
+- [Cisco Packet Tracer 7.1.1](https://www.netacad.com/pt-br/courses/packet-tracer)
+- [Excel 365](https://support.microsoft.com/en-us/excel)
+- [Python 3.2.10](https://www.python.org/downloads/)
+- [MySQL Workbench 8.0.28](https://dev.mysql.com/downloads/workbench/)
+- [Git 2.33.1](https://git-scm.com/downloads)
 
 ## References
 ### Git and GitHub
@@ -79,6 +82,12 @@ O desenvolvimento desses códigos de teste utiliza as ferramentas abaixo:
 ### Visual Basic for Applications
 - [Excel VBA Reference](https://docs.microsoft.com/en-us/office/vba/api/overview/excel)
 
+### Python
+- [Python Reference](https://docs.python.org/3/)
+
+### SQL
+- [SQL Reference](https://dev.mysql.com/doc/)
+
 ---
 
 ## Features
@@ -90,7 +99,8 @@ O desenvolvimento desses códigos de teste utiliza as ferramentas abaixo:
 - [x] [Jupyter](./jupyter)
 - [x] [Packet Tracer](./packet-tracer)
 - [x] [VBA](./vba)
-- [ ] [Python]()
+- [x] [Python](./python)
+- [x] [SQL](./sql)
 
 ## Layout
 

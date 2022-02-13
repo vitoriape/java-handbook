@@ -1,0 +1,3 @@
+=MÁXIMO(BancodeDados!A3:A99999)+1 
+
+Limita a quantidade de cadastros em um banco/base de dados. O +1 serve para o cadastro não começar do 0.
