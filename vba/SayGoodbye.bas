@@ -1,6 +1,6 @@
 Attribute VB_Name = "SayGoodbye"
 Sub auto_close()
 
-Application.Speech.Speak "AtÈ a prÛxima, Ana Paula"
+Application.Speech.Speak "At√© a pr√≥xima, Usu√°rio"
 
 End Sub
