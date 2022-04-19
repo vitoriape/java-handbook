@@ -16,6 +16,8 @@ Guia SQL
   * [CRUD](#crud)
   * [Comandos de CRUD (DML)](#comandos-de-crud-dml)
   * [Comandos de CRUD (DDL)](#comandos-de-crud-ddl)
+* [Normalização](#normalização)
+  * [Dependência Funcional](#dependência-funcional)
 <!--te-->
 
 ---
@@ -393,3 +395,25 @@ Diferente <>
 		   
 ---
 ---
+
+## **Normalização**
+Organização e divisão das tabelas do banco de dados visando a maior eficiência possível, diminuindo a redundância e permitindo a evolução do banco com a integridade dos dados. Esse processo se dá através de regras chamadas **formas normais**. Os principais conceitos envolvidos na normatização são as relações e as chaves (candidatas, primárias e estrangeiras). As relações podem ser entendidas como um equivalente matemático para **tabela**.
+
+`O foco da normalização é chegar em uma dependência funcional irredutivel à esquerda.`
+
+### **Dependência Funcional (DF)**
+Relação de determinância e dependência entre atributos.
+
+<table><thead><tr><th>Atributo X</th><th>Atributo Y</th></tr></thead><tbody><tr><td>Determinante</td><td>Dependente</td></tr><tr><td>CPF</td><td>Nome</td></tr><tr><td colspan="2">Y = f(X)</td></tr><tr><td colspan="2">f(CPF) = Nome</td></tr></tbody></table>
+
+`CPF -> Nome`
+
+>---
+
+<table><thead><tr><th colspan="3">Classificação de Dependência Funcional</th></tr></thead><tbody><tr><td>Tipo</td><td>Descrição</td><td>Exemplo</td></tr><tr><td>Dependência Funcional Total</td><td>Ao remover qualquer atributo A de um componente X a dependência deixa de existir</td><td>AB -&gt; C, D<br>{cnpj, razão social} -&gt; nome fantasia, nire<br>AB - cnpj<br>dependência de nire e nome fantasia deixa de existir</td></tr><tr><td>Dependência Funcional Parcial</td><td>Um atributo A pode ser removido do componente X sem alterar a dependência</td><td>AB -&gt; C, D<br>{matrícula, inscrição municipal} -&gt; rgi, iptu<br>inscrição municipal -&gt; iptu<br>iptu não depende de matrícula</td></tr><tr><td>Dependência Funcional Trivial</td><td>Um determinante com mais de um atributo pode determinar seus próprios membros quando isolados</td><td>{banco, agência} -&gt; banco</td></tr><tr><td>Dependência Funcional Não Trivial</td><td>Um dito determinante identifica outro atributo qualquer e o mesmo não faz parte do determinante</td><td>{banco, agência} -&gt; cidade</td></tr><tr><td>Dependência Funcional Irredutível à Esquerda</td><td>O lado esquerdo de uma DF é irredutível quando o determinante está em sua forma mínima, <br>não sendo possível reduzir a quantidade de atributos determinantes sem perder a DF</td><td>{cidade, estado} -&gt; país = não é irredutível<br>{estado} -&gt; país = irredutível</td></tr></tbody></table>
+
+---
+
+### **Primeira Forma Normal**
+### **Segunda Forma Normal**
+### **Terceira Forma Normal**
