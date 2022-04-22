@@ -45,10 +45,9 @@ Guia SQL
   * [Primeira Forma Normal (1FN)](#primeira-forma-normal-1fn)
   * [Segunda Forma Normal (2FN)](#segunda-forma-normal-2fn)
   * [Terceira Forma Normal (3FN)](#terceira-forma-normal-3fn)
-* [Controle de Concorrência: ACID]()
-  * [Bloqueio Compartilhado]
-  * [Bloqueio Exclusivo]
-
+* [Controle de Concorrência: ACID](#controle-de-concorrência-acid)
+  * [Bloqueio Compartilhado](#bloqueio-compartilhado)
+  * [Bloqueio Exclusivo](#bloqueio-exclusivo)
 <!--te-->
 
 ---
@@ -695,3 +694,5 @@ Caso sua instrução seja de `gravação`, ela não pode receber um bloqueio com
 
 ### **Bloqueio Exclusivo**
 A transação que recebe o bloqueio exclusivo fica reservada para a instrução que compõe a transação, não permitindo que outra faça uso do mesmo dado.
+
+---
