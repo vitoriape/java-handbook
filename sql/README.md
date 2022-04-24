@@ -36,7 +36,7 @@ Guia SQL
   * [Declaração de Variáveis](#declaração-de-variáveis)
   * [Estruturas Condicionais](#estruturas-condicionais)
 * [Ciclo de Valoração de Dados](#ciclo-de-valoracao-de-dados)
-  ---
+---
 * [Modelo Relacional](#modelo-relacional)
   * [Registro](#registro)
   * [Tabela](#tabela)
