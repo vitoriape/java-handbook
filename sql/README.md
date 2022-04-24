@@ -11,6 +11,9 @@ Guia SQL
     * [Junção](#junção)
   * [Operações Específicas de Banco de Dados](#operações-específicas-de-banco-de-dados)
     * [Data Definition Language (DDL)](#data-definition-language-ddl)
+      * [Criando Usuários](#criando-usuários)
+      * [Criando Views](#criando-views)
+      * [Criando Gatilhos](#criando-gatilhos)
       * [Criando Tabelas](#criando-tabelas)
       * [Excluindo Tabelas](#excluindo-tabelas)
       * [Alterando Tabelas](#alterando-tabelas)
@@ -26,28 +29,56 @@ Guia SQL
       * [Ordenando Dados](#ordenando-dados)
       * [Ordenando Dados: ASC e DESC](#ordenando-dados-asc-e-desc)
     * [Data Control Language (DCL)](#data-control-language-dcl)
-      * [Criando Usuários](#criando-usuários)
   * [Operações de Funções Agregadas](#operações-de-funções-agregadas)
     * [Contando Registros](#contando-registros)
     * [Calculando Registros](#calculando-registros)
+* [Programação em Banco de Dados](#programação-em-banco-de-dados)
+  * [Declaração de Variáveis](#declaração-de-variáveis)
+  * [Estruturas Condicionais](#estruturas-condicionais)
+* [Ciclo de Valoração de Dados](#ciclo-de-valoracao-de-dados)
   ---
-* [Banco de Dados e SGBD](#banco-de-dados-e-sgbd)
-  * [Ciclo de Valoração de Dados](#ciclo-de-valoracao-de-dados)
+* [Modelo Relacional](#modelo-relacional)
+  * [Registro](#registro)
+  * [Tabela](#tabela)
+  * [Campo](#campo)
+  * [View](#view)
+  * [Trigger](#trigger)
+  * [Function](#function)
+  * [Stored Procedure](#stored-procedure)
+  * [Índice](#índice)
+  * [Chave](#chave)
+  * [Relacionamento](#relacionamento)
+  * [Restrições de Integridade](#restrições-de-integridade)
+    * [Restrição de Unicidade de Chave](#restrição-de-unicidade-de-chave)
+    * [Restrição de Integridade da Entidade](#restrição-de-integridade-da-entidade)
+    * [Restrição de Integridade Referencial](#restrição-de-integridade-referencial)
   * [SGBD](#sgbd)
-* [Projeto Lógico](#projeto-lógico)
-  * [Representação](#representação)
-  * [Classificação](#classificação)
-  * [Cardinalidade](#cardinalidade)
-  * [Mapeamento de Cardinalidade](#mapeamento-de-cardinalidade)
-* [Normalização](#normalização)
-  * [Dependência Funcional](#dependência-funcional)
-  * [Dependência Transitiva](#)
-  * [Primeira Forma Normal (1FN)](#primeira-forma-normal-1fn)
-  * [Segunda Forma Normal (2FN)](#segunda-forma-normal-2fn)
-  * [Terceira Forma Normal (3FN)](#terceira-forma-normal-3fn)
-* [Controle de Concorrência: ACID](#controle-de-concorrência-acid)
-  * [Bloqueio Compartilhado](#bloqueio-compartilhado)
-  * [Bloqueio Exclusivo](#bloqueio-exclusivo)
+    * [Arquitetura em Camadas](#arquitetura-em-camadas)
+  * [Projeto Lógico](#projeto-lógico)
+    * [Atributos: Representação](#atributos-representação)
+    * [Atributos: Classificação](#classificação)
+      * [Simples](#simples)
+      * [Composto](#composto)
+      * [Monovalorado](#monovalorado)
+      * [Multivalorado](#multivalorado)
+      * [Nulo](#nulo)
+      * [Derivado](#derivado)
+    * [Modelo Entidade Relacionamento (MER)](#modelo-entidade-relacionamento-mer)
+      * [Cardinalidade](#cardinalidade)
+      * [Mapeamento de Cardinalidade](#mapeamento-de-cardinalidade)
+  * [Normalização](#normalização)
+    * [Dependência Funcional](#dependência-funcional)
+    * [Dependência Transitiva](#dependência-transitiva-dt)
+    * [Primeira Forma Normal (1FN)](#primeira-forma-normal-1fn)
+    * [Segunda Forma Normal (2FN)](#segunda-forma-normal-2fn)
+    * [Terceira Forma Normal (3FN)](#terceira-forma-normal-3fn)
+  * [Controle de Concorrência: ACID](#controle-de-concorrência-acid)
+    * [Bloqueio Compartilhado](#bloqueio-compartilhado)
+    * [Bloqueio Exclusivo](#bloqueio-exclusivo)
+* [Modelo Não Relacional](#modelo-não-relacional)
+* [Modelo Graph](#modelo-graph)
+* [Modelo Key-Value](#modelo-key-value)
+* [Modelo Wide-Column](#modelo-wide-column)
 <!--te-->
 
 ---
@@ -215,6 +246,45 @@ alter
 drop
 ```
 
+### **Criando Usuários**
+```sql
+CREATE USER 'myapp'@'%' IDENTIFIED BY 'senha'
+  WITH MAX_QUERIES_PER_HOUR 200
+        MAX_UPDATES_PER_HOUR 100
+        MAX_CONNECTIONS_PER_HOUR 50
+        MAX_USER_CONNECTIONS 30;
+```
+
+
+### **Criando Views**
+Compila comandos `SELECT` repetidos muitas vezes, deixando essa visão de consulta sempre disponível.  
+
+```sql
+CREATE VIEW ClientesGold
+AS
+SELECT Nome1, Sobrenome1
+FROM Clientes
+WHERE Gold = 'S';
+```
+
+
+### **Criando Gatilhos**
+Pode ser usado afim de manter um histórico de alterações de registros (`logs`) ou até para manter integridade.
+
+```sql
+CREATE TRIGGER nome_do_gatilho ON dono.Nome_da_Tabela
+
+/* Opções de comando CRUD do gatilho */
+FOR INSERT
+FOR UPDATE
+FOR SELECT
+FOR DELETE
+
+AS
+/* Código a ser executado */
+```
+
+
 ### **Criando Tabelas**
 Um padrão comum adotado para nomes de tabelas é o `tb_nome`. O nome das colunas é de livre escolha, já o seu tipo pode ser `numérico` ou `não numérico` e o seu tamanho está relacionado a sua alocação na memória do banco.
 Quanto as restrições, sua classificação se dá através de `NULL` E `NOT NULL` e sua integridade pelo comando `CONSTRAINT`, para primary key `PK` e foreing key `FK`.
@@ -361,15 +431,6 @@ grant
 revoke
 ```
 
-### **Criando Usuários**
-```sql
-CREATE USER 'myapp'@'%' IDENTIFIED BY 'senha'
-  WITH MAX_QUERIES_PER_HOUR 200
-        MAX_UPDATES_PER_HOUR 100
-        MAX_CONNECTIONS_PER_HOUR 50
-        MAX_USER_CONNECTIONS 30;
-```
-
 >---
 
 ## **Operações de Funções Agregadas**
@@ -414,101 +475,235 @@ FROM nome_do_banco.nome_tabela
 		   
 ---
 ---
+
+## **Programação em Banco de Dados**
+Se dá através das [functions](#function) e dos [stored procedures](#stored-procedure).
+
+`Stored Procedures`
+-------------------
+
+```sql
+CREATE PROC InserirTempe
+    @estado varchar(2)
+    @temperatura int
+AS
+BEGIN
+    INSERT INTO tb_temperaturas
+VALUES (@estado, @temperatura)
+END
+
+/* Chamando o procedure criado */
+EXECUTE InserirTempe('São Paulo', 50)
+```
+
+>---
+
+### **Declaração de Variáveis**
+```sql
+/* Declarando uma variável*/
+DECLARE @min_temperatura int
+DECLARE @min_temperatura int, @max_temperatura int
+
+/* Atribuindo valores*/
+SET @min_temperatura = 3
+
+/* Atribuindo valor no bloco SQL*/
+SELECT
+  @min_temperatura = minimoTemperatura
+FROM tb_temperaturas
+WHERE estado = 'São Paulo'
+```
+
+### **Estruturas Condicionais**
+
+- IF ELSE
+```sql
+IF(
+  SELECT minimoTemperatura FROM tb_temperaturas 
+  WHERE estado = 'São Paulo') <5)
+/* Comandos SQL para o IF */
+
+ELSE 
+/* Comandos SQL para o ELSE */
+```
+
+>---
+
+- SELECT CASE
+```sql
+SELECT CASE minimoTemperatura
+    WHEN 5 THEN 'Frio'
+    WHEN 22 THEN 'Agradável'
+    WHEN 40 THEN 'Calor'
+    ELSE 'Sem temperatura registrada'
+END AS SensacaoTermica
+FROM tb_temperaturas
+```
+
+>---
+
+- WHILE
+```sql
+WHILE(SELECT avg(temperaturaMinima) FROM tb_temperaturas) < 15
+BEGIN 
+/* Comandos SQL para o WHILE */
+END
+```
+
+---
+
+`Functions`
+----------
+
+```sql
+CREATE FUNCTION ObterMinTempe(@estado varchar)
+    RETURNS min_temperatura
+AS
+BEGIN 
+    DECLARE @min_temperatura int
+      SELECT 
+        @min_temperatura = minimoTemperatura
+      FROM tb_temperaturas
+      WHERE estado = @estado
+    RETURN @min_temperatura
+END
+
+/* Chamando a função criada */
+SELECT ObterMinTempe('São Paulo')
+```
+
 ---
 ---
 
-## **Banco de Dados e SGBD**
-### **Ciclo de Valoração de Dados**
+## **Ciclo de Valoração de Dados**
 Transformação dos dados em informações úteis, depois agregando inteligência e gerando tecnologia e conhecimento. Um **banco de dados**, no qual esses dados são armazenados, se baseia nas **entidades do mundo real** que compõem o **sistema de informação**.
 
-📚 **Modelo Relacional:** Responsável por organizar os dados afim de transformar os mesmos em informação, baseando-se em alguns pilares como:
+---
+---
 
-- **Registro**  
-Armazenamento dos dados de forma ordenada, como uma "ficha" ou linha.
+## **Modelo Relacional** 
+Responsável por organizar os dados afim de transformar os mesmos em informação. Ideal quando as entidades, modelos, relacionamentos e afins estão bem claros. Baseia-se em alguns pilares como:
 
-- **Tabela**
+
+### **Registro**  
+Armazenamento dos dados de forma ordenada, como uma "ficha" ou uma linha.
+
+* `Tuplas`  
+**Sequência de dados e/ou elementos, lista de registros** 
+
+>---
+
+### **Tabela**
 Estrutura de dados sem preenchimento.
 
-- **Campo**
+>---
+
+### **Campo**
 Espaços de preenchimento da tabela.
 
----
+>---
 
-- **Chave**
+### **View**
+Visão [criada dinamicamente por consulta](#criando-views) que tem por objetivo simplificar a mesma. Não armazena dados e logo, não ocupa espaço físico na memória.
+
+>---
+
+### **Trigger**
+Procedimento armazenado executado automaticamente pelo SGBD.  [Disparado](#criando-gatilhos) sempre que há ocorrência de um evento que modifique uma determinada tabela, como a **criação** ou **exclusão** de um registro.
+
+>---
+
+### **Function**
+Similar aos stored procedures, porém possui menos recursos e sempre retorna algo.
+
+* `scalar functions`  
+Retorna um tipo de dado e um valor.
+
+* `inline table-valued functions`  
+Retorna o resultado de uma consulta.
+
+* `multi-statement table-valued functions`  
+Retorna o resultado em uma tabela pré-definida como parâmetro.
+
+>---
+
+### **Stored Procedure**
+"Programas" compilados dentro do banco de dados que executam comandos SQL, podendo ou não receber **parâmetros de entrada**, bem como retornar **valores**. Sua função é implementar um `CRUD`, tendo como objetivo fim a execução de um comando.
+
+>---
+
+### **Índice** 
+Critério ou protocolo de organização dos registros, otimizando a **busca**. Um exemplo seria um fluxo de caixa cujo índice é o período ou data.
+
+>---
+
+### **Chave**
 Atributo ou conjunto de atributos que identifica uma **única entidade** dentro de um **conjunto de entidades**. Uma chave deve ser **mínima**, ou seja, **nenhum atributo** que a compõe poderá ser retirado da mesma.
 
-📚 **Primary Key:** A **chave primária** (candidata) é um indexador da unidade dos dados, não se repetindo em nenhum registro e unificando cada registro em particular.  
+* `Primary Key`  
+(PK) A **chave primária** (candidata) é um indexador da unidade dos dados, não se repetindo em nenhum registro e unificando cada registro em particular.  
 
-📚 **Foreign Key:** A **chave estrangeira** é um atributo usado para relacionar entidades, um campo de referência na tabela filha que relaciona dados da tabela mãe.
+* `Foreign Key`  
+(FK) A **chave estrangeira** é um atributo usado para relacionar entidades, um campo de referência na tabela filha que relaciona dados da tabela mãe.
 
----
+>---
 
-- **Relacionamento**
+### **Relacionamento**
 Maneira pela qual os dados entre diferentes registros e tabelas se comunicam, gerando informações. Um relacionamento entre entidades **define existência de registro**, por exemplo, não existe um professor sem alunos ou produto sem pedido.
 
-**Exemplo :one: :** 
-Chave primária = **CPF**
+**Exemplo :one: :**     
+`PK = CPF`  
 **Não é possível criar um registro com um CPF já cadastrado no banco.**
 
-**Exemplo :two: :** 
-Chave estrangeira = **Cliente**
+**Exemplo :two: :**  
+`FK = CLIENTE`  
 **Pode-se relacionar um número do cliente com vários pedidos diferentes.**
 
 É incomum que haja um **relacionamento ternário** entre entidades, considerando que a modelagem segue a **teoria dos conjuntos**, mas pode acontecer.
 
 ---
+---
 
-📚 **Restrições de Integridade**
+### **Restrições de Integridade**
 
->**Restrição de Unicidade de Chave**
+#### **Restrição de Unicidade de Chave**
 Uma chave primária não pode ter o mesmo valor em duas **tuplas distintas** da mesma relação.
 
->**Restrição de Integridade da Entidade**
+>---
+
+#### **Restrição de Integridade da Entidade**
 Uma chave primária não pode ter valor **nulo** em nenhuma tupla da relação.
 
->**Restrição de Integridade Referencial**
+>---
+
+#### **Restrição de Integridade Referencial**
 Usada para manter a **consistência** entre tuplas de uma relação. Relaciona-se com o conceito de chave estrangeira na medida que **o atributo de uma entidade não pode existir sem a entidade**. Por exemplo, uma certidão de ônus sem imóvel.
 
-
-📚 **Tuplas** = (sequência de dados e/ou elementos, lista de registros) 
-
+---
 ---
 
-- **Índice:** 
-Critério ou protocolo de organização dos registros, otimizando a **busca**. Um exemplo seria um fluxo de caixa cujo índice é o período ou data.
-
----
-
----
-
-### **SGBD**
+## **SGBD**
 O **Sistema de Gerenciamento de Banco de Dados** é o sistema de software responsável pela gestão dos bancos de dados. É uma **coleção de dados inter-relacionados** e um conjunto de mecanismo de acesso aos mesmos.
 
-📚 **Arquitetura em Camadas:** Todo SGBD divide-se em:
+### **Arquitetura em Camadas**  
+Todo SGBD divide-se em três níveis.
 
-- **Nível Físico:**
-Esquema interno de armazenamento em disco.
-
-- **Nível Lógico:**
-Abstração dos dados e projeção do esquema registro-tabela-etc.
-
-- **Nível View:**
-Implementação do modelo elaborado no nível lógico trabalhando com linguagens.
+<table><thead><tr><th colspan="2">Arquitetura em Camadas</th></tr></thead><tbody><tr><td>Nível Físico</td><td>Esquema interno de armazenamento em disco</td></tr><tr><td>Nível Lógico</td><td>Abstração dos dados e projeção do esquema registro-tabela-etc</td></tr><tr><td>Nível View</td><td>Implementação do modelo elaborado no nível lógico trabalhando com linguagens</td></tr></tbody></table>
 
 ---
 ---
 
 ## **Projeto Lógico**
 
->**Problema > 
-Nível descritivo > 
-Nível conceitual > 
-Nível computacional > 
-Nível físico**
+>**Problema >**   
+**Nível descritivo >**   
+**Nível conceitual >**   
+**Nível computacional >**   
+**Nível físico**
 
----
+>---
 
-### **Representação**
+### **Atributos: Representação**
 Concatenar quais entidades do mundo real serão representadas no projeto e descrever suas **características** em uma linguagem intermediária. A **entidade** é uma representação de um elemento real. Um **elemento** do conjunto de entidades é também uma entidade, identificada por características específicas, os **atributos**.
 
 >**Atributo <> Valor**
@@ -518,72 +713,72 @@ Concatenar quais entidades do mundo real serão representadas no projeto e descr
 
 ---
 
-### **Classificação**
-Um atributo **não possui outros atributos**. Se um atributo possui muitas ramificações de valores no banco, ele deve ser uma **entidade** e se relacionar com outras. Um atributo pode ser classificado como:
+### **Atributos: Classificação**
+Um atributo **não possui outros atributos**. Se um atributo possui muitas ramificações de valores no banco, ele deve ser uma **entidade** e se relacionar com outras. Um atributo pode ser classificado como simples e composto, mono ou multivalorado, nulo ou derivado.
 
-📚 **Simples**
-Um **atributo simples** não é passível de divisão em partes
-**Exemplo:** Nome de um cliente
+#### **Simples**
+Um **atributo simples** não é passível de divisão em partes.  
+`Exemplo: NOME DE UM CLIENTE`
 
-📚 **Composto**
 
-Um **atributo composto** é divido em partes
-**Exemplo:** Nome completo de um cliente, incluindo sobrenomes
+#### **Composto**
+Um **atributo composto** é divido em partes.  
+`Exemplo: NOME COMPLETO DE UM CLIENTE, INCLUINDO SOBRENOMES`  
 
 * Considera a capacidade de decompor um campo, sendo a diferença fundamental a forma de modelar.
 
----
+>---
 
-📚 **Monovalorado**  
-Um **atributo monovalorado** possui apenas um valor para a entidade de referência
-**Exemplo:** Número da casa de um cliente
+#### **Monovalorado**  
+Um **atributo monovalorado** possui apenas um valor para a entidade de referência.  
+`Exemplo: NÚMERO DA CASA DE UM CLIENTE`
 
-📚 **Multivalorado**
+#### **Multivalorado**
+Um **atributo multivalorado**  pode assumir diversos valores.  
+`Exemplo: TELEFONE PARA CONTATO DE UM CLIENTE`
 
-Um **atributo multivalorado**  pode assumir diversos valores
-**Exemplo:** Telefone para contato de um cliente
+>---
 
----
-
-📚 **Nulo**
-**Pode ou não** possuir um valor. Seu valor também pode ser **desconhecido**.
-**Exemplo:** Nome dos dependentes de um cliente
+#### **Nulo**
+**Pode ou não** possuir um valor. Seu valor também pode ser **desconhecido**.  
+`Exemplo: NOME DOS DEPENDENTES DE UM CLIENTE`
 
 * Para o usuário, o campo é identificado como opcional.
 
-📚 **Derivado**
-Seu valor pode ser **derivado de outros atributos**.
-**Exemplo:** Consolidação dos campos **data de contratação do serviço** e **data atual** para gerar um atributo **tempo de uso do serviço**.
+#### **Derivado**
+Seu valor pode ser **derivado de outros atributos**.  
+`Exemplo: CONSOLIDAÇÃO DOS CAMPOS **dataContratacaoServico** E **dataAtual** GERANDO UM ATRIBUTO **tempoUsoServico**`
 
 ---
-
-📚 **Modelo Entidade Relacionamento (MER)**
-Padrão que elucida o funcionamento de um modelo de dados que, por sua vez, representa entidades, seus atributos e suas relações.
-
->**O **lollipop** preenchido é um atributo que representa um campo chave (primária).**
-
->**O losango representa a relação entre as entidades**
-
 ---
+
+### **Modelo Entidade Relacionamento (MER)**
+Padrão que elucida o funcionamento de um modelo de dados que, por sua vez, representa entidades, seus atributos e as relações entre os mesmos.
+
+>**O `lollipop` preenchido é um atributo que representa um campo chave `(PK)`.**
+
+>**O `losango` representa a `relação` entre as entidades**
+
+>---
 
 ### **Cardinalidade**
 Representação do **mínimo** e **máximo** da relação entre entidades.
 
-📚 **Estrutura:**
+📚 **Estrutura:**  
 (mínimo, máximo)
 
-📚 **Exemplo:**
+📚 **Exemplo:**  
 (0, N)
 
----
+>---
 
 ### **Mapeamento de Cardinalidade**
 Linha direcional em uma teoria dos conjuntos que delimita o **tipo de cardinalidade**.
 
-**(a)** Um para um
-**(b)** Um para muitos
-**(c)** Muitos para um
-**(d)** Muitos para muitos
+**(a)** Um para um  
+**(b)** Um para muitos  
+**(c)** Muitos para um  
+**(d)** Muitos para muitos  
 
 ---
 ---
@@ -606,7 +801,7 @@ Relação de determinância e dependência entre atributos.
 
 >---
 
-### **Dependência Transtiva (DT)**
+### **Dependência Transitiva (DT)**
 Uma forma de identificar facilmente uma dependência transitiva é quando um ou mais atributos se repetem constantemente, mas eles dependem de um atributo não chave.
 
 _A dependência transitiva pode criar os seguintes problemas:_
@@ -696,3 +891,31 @@ Caso sua instrução seja de `gravação`, ela não pode receber um bloqueio com
 A transação que recebe o bloqueio exclusivo fica reservada para a instrução que compõe a transação, não permitindo que outra faça uso do mesmo dado.
 
 ---
+---
+
+## **Modelo Não Relacional**
+(NoSQL) Possui dados semiestruturados, ou seja, o modelo não possui um `schema` bem definido, apresentando até certo grau de desestruturação das informações. O armazenamento do mesmo é visto em forma de **documentos** e não de **tabelas** como o modelo relacional.
+
+* A linguagem de acesso depende do SGBD, não seguindo o modelo T-SQL com `SELECT` e afins.
+
+<table><thead><tr><th colspan="2">JSON</th></tr></thead><tbody><tr><td colspan="2">Estrutura de informação com notação JavaScript</td></tr><tr><td colspan="2">Hierarquia de Diretório</td></tr><tr><td colspan="2">Coleções</td></tr><tr><td colspan="2">Etiquetas</td></tr><tr><td colspan="2">Metadados</td></tr></tbody></table>
+
+---
+---
+
+## **Modelo Graph**
+Tem o objetivo de represntar relacionamento e a navegação entre eles, sendo ideal para detecção de fraudes.
+
+---
+---
+
+## **Modelo Key-Value**
+Como se fosse uma tabela com apenas duas colunas, na qual os valores ficam agrupados na segunda e chave na primeira. É um banco extremamente **performático** por possuir uma estrutura limitada.
+
+<table><thead><tr><th>Chave</th><th>Valor</th></tr></thead><tbody><tr><td>C1</td><td>AAA, BBB, CCC</td></tr><tr><td>C2</td><td>A, B</td></tr><tr><td>C3</td><td>AAA, 2, 21/02/2022</td></tr></tbody></table>
+
+---
+---
+
+## **Modelo Wide-Column**
+Um banco de dados colunar é geralmente usado para aplicativos de transações, pois possui a capacidade de recuperar colunas rapidamente.
