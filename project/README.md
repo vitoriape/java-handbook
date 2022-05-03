@@ -18,6 +18,8 @@ Guia Desenvolvimento de Sistemas
 * [Viabilidade Técnica](#viabilidade-técnica)
 * [Dimensionamento do Projeto](#dimensionamento-do-projeto)
 * [Gestão da Qualidade-Riscos-Pessoas-Configurações](#gestão-da-qualidade-riscos-pessoas-configurações)
+* [Requisitos de Qualidade do Software](#requisitos-de-qualidade-do-software)
+  * [Requisitos Não Funcionais](#requisitos-não-funcionais)
 <!--te-->
 
 ---
@@ -181,7 +183,22 @@ Reconhece a importância da satisfação do cliente, privilegiando a prevenção
 <table><thead><tr><th colspan="2">Gerenciando Configurações</th></tr></thead><tbody><tr><td>Item de Configuração</td><td>Qualquer item gerado no desenvolvimento, como módulos, que seja candidato para sofrer um controle de modificações</td></tr><tr><td rowspan="5">Plano de Gerenciamento</td><td>Define os itens a serem gerenciados</td></tr><tr><td>Estabelece as responsabilidades</td></tr><tr><td>Cria políticas de gerenciamento</td></tr><tr><td>Especifica as ferramentas de controle</td></tr><tr><td>Descreve a estrutura de registro das informações</td></tr></tbody></table>
 
 ---
+---
 
-## ****
-### ****
+## **Requisitos de Qualidade do Software**
+### **Requisitos Não Funcionais**
+Conhecidos também como requisitos de qualidade do software, e se relacionam com a natureza do mesmo que independe do seu funcionamento.
+
+- **Manutenibilidade**
+Grau de facilidade de modificação ao longo da evolução do software.
+
+- **Confiança e Proteção**
+Segurança do programa.
+
+- **Eficiência**
+Relaciona-se com o uso de banda, rede, RAM e afins.
+
+- **Aceitabilidade**
+Nível de nivelamento da natureza do software em relação ao que o cliente solicitou.
+
 #### ****

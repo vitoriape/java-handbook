@@ -44,6 +44,13 @@ Guia SQL
   * [View](#view)
   * [Trigger](#trigger)
   * [Function](#function)
+    * [Funções Nativas](#funções-nativas)
+      * [Funções Numéricas](#funções-numéricas)
+      * [Funções de Caracteres](#funções-de-caracteres)
+      * [Funções de Data](#funções-de-data)
+      * [Funções de Conversão](#funções-de-conversão)
+    * [Funções Armazenadas](#funções-armazenadas)
+      * [Função Determinística & Não Determinística](#função-determinística--não-determinística)
   * [Stored Procedure](#stored-procedure)
   * [Índice](#índice)
   * [Chave](#chave)
@@ -79,6 +86,13 @@ Guia SQL
 * [Modelo Graph](#modelo-graph)
 * [Modelo Key-Value](#modelo-key-value)
 * [Modelo Wide-Column](#modelo-wide-column)
+---
+* [Funções Nativas]()
+* [Funções Armazenadas]()
+  * [Função Determinística & Não Determinística](#função-determinística--não-determinística)
+  * [Criando uma Função](#criando-uma-função)
+  * [Chamando uma Função](#chamando-uma-função)
+  * [Usando Delimiter](#usando-delimiter)
 <!--te-->
 
 ---
@@ -625,7 +639,136 @@ Retorna o resultado de uma consulta.
 * `multi-statement table-valued functions`  
 Retorna o resultado em uma tabela pré-definida como parâmetro.
 
+---
+
+#### **Funções Nativas**
+Semelhantes às funções de algoritmos, elas são códigos SQL (`T-SQL`) que são compilados como objetos dentro do SGBD, estando diretamente ligadas a ele. Manipulam caracateres, números, datas e afins, além de poderem converter e consolidar dados.
+Funções em geral possuem parãmetros que, usualmente, são identificados e separados dentro de parênteses.
+
+- **Ambiente de Chamada**  
+Espaço de solicitações nas quais os códigos recebem e processam argumentos, retornando resultados que podem apresentar natureza numérica, de caracateres (`string`), data ou `NULL`.
+
 >---
+
+##### **Funções Numéricas**
+Comumente recebem um número como parâmetro e retornam um outro como resultado.
+
+```sql
+ROUND(valor1) AS valorArredondado
+
+valorNumerico * 1.2 AS aumento20porcento
+
+TRUNCATE(valor2, 1) AS valorCasasDecimais
+
+RAND
+RAND(N)
+
+ABS
+```
+
+>---
+
+##### **Funções de Caracteres**
+Só aceitam caracteres como parâmetros de entrada, podendo retornar tanto o mesmo quanto números.
+
+```sql
+LENGHT(entrada0) tamanhoEntrada
+
+CONCAT(entrada1, '', entrada2) AS saida1
+
+LCASE()
+LOWER()
+LTRIM()
+REPLACE()
+SUBSTRING()
+```
+
+>---
+
+##### **Funções de Data**
+Recebem parâmetros do tipo data e podem retornar tanto resultados em formato de data quanto numéricos.
+
+```sql
+SELECT NOW() FROM DUAL
+
+DATEDIFF(NOW(), '2022-04-30 22:20:10')
+
+DATE_FORMAT(dadoData, '%W %M, %Y)
+
+ADD_MONTHS
+CURRENT_TIMESTAMP
+LOCALTIME
+LOCAMTIMESTAMP
+YEAR
+DATEOFYEAR
+TIMEDIFF
+```
+
+>---
+
+##### **Funções de Conversão**
+Também chamadas de funções de _casting_, são usadas para converter um valor de entrada em outro. Pode ter por objetivo tornar um dado manipulável através de novas funções.
+
+```sql
+TO_CHAR
+CAST
+CONVERT
+```
+
+---
+---
+
+#### **Funções Armazenadas**
+Possuem o mesmo objetivo das Funções Nativas, porém as armazenadas são criadas e mantidas pelo desenvolvedor do SGBD. Duas funções não podem apresentar a mesma `assinatura`.
+
+- **Assinatura de Função**  
+Refere-se ao nome e o retorno de chamada de uma função.
+
+##### **Função Determinística & Não Determinística**
+Uma função determinística (`DETERMINISTIC`) retorna o tipo de dado e valor estipulado **independente** do parâmetro de entrada (quando há), já uma função não determinística pode eventualmente não retornar os procedimentos determinados.
+
+>---
+
+##### **Criando uma Função**
+
+```sql
+CREATE FUNCTION nomefuncao(
+    parametrodeentrada TIPODEDADO(VALOR)
+) 
+
+RETURNS TIPODEDADO(VALOR) DETERMINISTIC
+RETURN 'Texto';
+
+BEGIN
+    DECLARE nomevariavel TIPODEDADO(VALOR);
+    SET nomevariavel = valordeclarado();
+    RETURN nomevariavel;
+END;
+```
+
+##### **Chamando uma Função**
+
+```sql
+SELECT NOW(),
+    nomefuncao()
+FROM DUAL;
+```
+
+>---
+
+##### **Usando Delimiter**
+Como em outras linguagens, no SQL o ponto e vírgula `;` demarca o fim de um comando (transação), portanto, para que a execução de uma função ocorra sem erros, é preciso sinalizar seu início e fim por meio do comando `DELIMITER`.  
+
+```sql
+DELIMITER //
+CREATE FUNCTION
+BEGIN
+END //
+DELIMITER ;
+```
+
+---
+---
 
 ### **Stored Procedure**
 "Programas" compilados dentro do banco de dados que executam comandos SQL, podendo ou não receber **parâmetros de entrada**, bem como retornar **valores**. Sua função é implementar um `CRUD`, tendo como objetivo fim a execução de um comando.
@@ -919,3 +1062,7 @@ Como se fosse uma tabela com apenas duas colunas, na qual os valores ficam agrup
 
 ## **Modelo Wide-Column**
 Um banco de dados colunar é geralmente usado para aplicativos de transações, pois possui a capacidade de recuperar colunas rapidamente.
+
+---
+---
+
