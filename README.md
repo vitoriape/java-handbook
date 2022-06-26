@@ -32,14 +32,13 @@ Index
    * [About](#about)
    * [Tools](#tools)
    * [References](#references)
-      * [Git and GitHub](#git-and-github)
       * [Java](#java)
       * [JavaScript](#javascript)
       * [HTML](#html)
-      * [Jupyter](#jupyter)
       * [Packet Tracer](#packet-tracer)
       * [Visual Basic for Applications](#visual-basic-for-applications)
       * [Python](#python)
+      * [Jupyter](#jupyter)
       * [SQL](#sql)
    * [Features](#features)
    * [Layout](#layout)
@@ -78,9 +77,6 @@ O desenvolvimento desses códigos de teste utiliza as ferramentas abaixo:
 ### HTML
 - [HTML Reference](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference)
 
-### Jupyter
-- [Jupyter Read The Docs](https://jupyter.readthedocs.io/pt_BR/latest/content-quickstart.html)
-
 ### Packet Tracer
 - [Cisco Packet Tracer 8.1.0 FAQ](https://www.netacad.com/sites/default/files/cisco-packet-tracer-faq.pdf)
 
@@ -89,6 +85,9 @@ O desenvolvimento desses códigos de teste utiliza as ferramentas abaixo:
 
 ### Python
 - [Python Reference](https://docs.python.org/3/)
+
+### Jupyter
+- [Jupyter Read The Docs](https://jupyter.readthedocs.io/pt_BR/latest/content-quickstart.html)
 
 ### SQL
 - [SQL Reference](https://dev.mysql.com/doc/)
@@ -101,10 +100,10 @@ O desenvolvimento desses códigos de teste utiliza as ferramentas abaixo:
 - [x] [Java](./java)
 - [x] [JavaScript](./javascript)
 - [x] [HTML](./html)
-- [x] [Jupyter](./jupyter)
 - [x] [Packet Tracer](./packet-tracer)
 - [x] [VBA](./vba)
 - [x] [Python](./python)
+- [x] [Jupyter](./python/jupyter/)
 - [x] [SQL](./sql)
 
 ## Layout
