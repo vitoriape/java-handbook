@@ -1,0 +1,162 @@
+\documentclass[a4paper,10pt,titlepage]{article}
+\usepackage[portuguese]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[ruled,linesnumbered]{algorithm2e}
+\usepackage[table,xcdraw]{xcolor}
+\newcommand{\HRule}{\rule{\linewidth}{0.5mm}}
+\usepackage{graphics} 
+\usepackage{epsfig} 
+\usepackage{amsmath} 
+\usepackage{amssymb}  
+\usepackage{nicefrac}
+\usepackage{subfig}
+\usepackage{setspace}
+\usepackage{microtype}
+\usepackage{color}
+\usepackage{amsthm}
+\usepackage{listings,xcolor}
+\usepackage{ragged2e}
+\usepackage{times}
+\usepackage{multicol}
+\usepackage{tabularx}
+\usepackage{geometry}
+\geometry{
+ a4paper,
+ total={170mm,257mm},
+ left=20mm,
+ top=20mm,
+ }
+
+\begin{document} 
+
+%--------------------> CAPA <-----------------------
+\begin{titlepage}
+    \begin{justify}
+        \begin{center}
+            \begin{large} 
+                NOME COMPLETO DA ORGANIZAÇÃO\\[1.5cm]
+                \textbf{CURSO}\\[0.5cm]
+                \textbf{PROJETO}\\[3cm]
+                \textbf{TEMA}\\[6cm]
+            
+                NOME DO(A) ALUNO(A)\vfill
+            
+                Cidade\\[0.5cm]
+                Ano\\
+            \end{large}
+        \end{center}
+    \end{justify}
+\end{titlepage}
+
+
+\begin{titlepage}
+    \begin{justify}
+        \begin{center}
+            \begin{large} 
+                NOME COMPLETO DA ORGANIZAÇÃO\\[1.5cm]
+                \textbf{CURSO}\\[0.5cm]
+                \textbf{PROJETO}\\[3cm]
+                \textbf{TEMA}\\[6cm]
+            
+                \hspace{.45\textwidth}
+                
+        \begin{flushright}        
+            \begin{minipage}{.5\textwidth} 
+                Produção apresentada ao (Instituição de (Cidade), como exigência parcial para carga horária do (Curso), sob orientação do(a) Orientador(a) (Nome).
+            \end{minipage}
+        \end{flushright}\vfill 
+        
+                Cidade\\[0.5cm]
+                Ano\\
+            \end{large}
+        \end{center}
+    \end{justify}
+\end{titlepage}
+
+%-------------------> RESUMO <----------------------
+\begin{center}
+    \begin{Large}
+        RESUMO
+    \end{Large}
+\end{center}
+
+\begin{onehalfspacing}
+    \begin{justify}
+        \begin{large}
+            Este projeto teve por componente principal a ampliação de conhecimentos relacionados ao (tema) em empresas de fornecimento de soluções de (tema). Pesquisas teóricas sobre os norteadores de uma empresa, bem como sua estrutura organizacional, sua infraestrutura de TI e seus serviços foram responsáveis por estruturar essa primeira parte do projeto. Ao final da pesquisa, foi definida uma empresa de fornecimento de soluções de (tema) para visita futura, afim de compreender sua missão, visão e valores, assim como sua estrutura organizacional.
+        \end{large}
+    \end{justify}
+\end{onehalfspacing}
+    
+\begin{onehalfspacing}
+    \begin{justify}
+        \begin{large}
+            \textbf{Palavras-chave:} 1. Tema. 2. Tema. 3. Estrutura Organizacional. 4. Tema. 5. Tema.
+            \end{large}
+        \end{justify}
+\end{onehalfspacing}\pagebreak
+
+%------------------> ABSTRACT <--------------------
+\begin{center}
+    \begin{Large}
+        ABSTRACT
+    \end{Large}
+\end{center}
+
+\begin{onehalfspacing}    
+    \begin{justify}
+        \begin{large}
+            This project had as main component the expansion of knowledge related to (topic) . Theoretical research about the guidelines of a company, as well as it's organizational structure, IT infrastructure and services were responsible for structuring this first part of the project. At the end of the research, an (topic) company was defined for a future visit, in order to understand your mission, vision and values, as well as your organizational structure.
+        \end{large}
+    \end{justify}
+\end{onehalfspacing}
+    
+\begin{onehalfspacing} 
+    \begin{justify}
+        \begin{large}
+                \textbf{Keywords:} 1. Topic. 2. Topic. 3. Topic. 4. Topic. 5. Topic.
+        \end{large}
+    \end{justify}
+\end{onehalfspacing}\pagebreak
+
+%--------------------> LISTAS <----------------------
+\begin{doublespacing}
+    \begin{center}
+        \begin{large}
+            \listoffigures
+        \end{large}
+    \end{center}
+\end{doublespacing}\pagebreak
+
+\begin{doublespacing}
+    \begin{center}
+        \begin{large}
+            \listoftables
+        \end{large}
+    \end{center}
+\end{doublespacing}\pagebreak
+
+\begin{onehalfspacing}
+    \begin{center}
+        \begin{large}
+            \tableofcontents
+        \end{large}
+    \end{center}
+\end{onehalfspacing}\pagebreak
+
+%--------------------> INPUTS <----------------------
+    \input{intro}
+    \input{report}
+    \input{conclusion}
+    
+%-----------------> BIBLIOGRAFIA <-------------------
+\begin{onehalfspacing}
+    \begin{center}
+        \begin{large}
+            \bibliographystyle{alpha}
+            \bibliography{references}
+        \end{large}
+    \end{center}
+\end{onehalfspacing}
+    
+\end{document}

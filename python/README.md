@@ -27,16 +27,13 @@
 ---
 
 Index
-======
+=================
 <!--ts-->
    * [About](#about)
    * [Tools](#tools)
    * [References](#references)
-      * [Git and Github](#git-and-github)
-      * [DAX](#dax)
       * [Java](#java)
       * [JavaScript](#javascript)
-      * [Latex](#latex)
       * [HTML](#html)
       * [Packet Tracer](#packet-tracer)
       * [Visual Basic for Applications](#visual-basic-for-applications)
@@ -66,23 +63,16 @@ O desenvolvimento desses códigos de teste utiliza as ferramentas abaixo:
 - [Python 3.2.10](https://www.python.org/downloads/)
 - [MySQL Workbench 8.0.28](https://dev.mysql.com/downloads/workbench/)
 - [Git 2.33.1](https://git-scm.com/downloads)
-- [PowerBI Desktop](https://www.microsoft.com/pt-br/download/details.aspx?id=58494)
 
 ## References
 ### Git and GitHub
 - [Git Documentation](https://git-scm.com/doc)
-
-### DAX
-- [Referência de DAX](https://docs.microsoft.com/pt-br/dax/)
 
 ### Java
 - [Java SE Documentation](https://www.oracle.com/java/technologies/javase-documentation.html)
 
 ### JavaScript
 - [JavaScript Guide](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide)
-
-### Latex
-- [Overleaf Guides](https://pt.overleaf.com/learn)
 
 ### HTML
 - [HTML Reference](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference)
@@ -107,10 +97,8 @@ O desenvolvimento desses códigos de teste utiliza as ferramentas abaixo:
 ## Features
 
 - [x] [Git and GitHub](./github)
-- [ ] [DAX](./dax/)
 - [x] [Java](./java)
 - [x] [JavaScript](./javascript)
-- [x] [Latex](./latex)
 - [x] [HTML](./html)
 - [x] [Packet Tracer](./packet-tracer)
 - [x] [VBA](./vba)
@@ -119,6 +107,7 @@ O desenvolvimento desses códigos de teste utiliza as ferramentas abaixo:
 - [x] [SQL](./sql)
 
 ## Layout
+
 ### Guidance
 <table class="tg">
 <thead>
@@ -181,3 +170,4 @@ $ start README.md
     <td align="center"><a href="https://github.com/VagnerGusmaoTI"><img style="border-radius: 50%;" src="https://avatars.githubusercontent.com/u/88947342?v=4" width="100px;" alt=""/><br /><sub><b>Wagner Gusmão</b></sub></a><br /><a href="https://www.linkedin.com/in/vagnergusmao" title="LinkedIn">🌐</a></td>
   </tr>
 </table>
+
