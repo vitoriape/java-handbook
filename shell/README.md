@@ -10,8 +10,14 @@ Index
 
 # Guia Sistema Operacional
 <!--ts-->
-* [](#)
+* [Máquinas Virtuais](#máquinas-virtuais)
 <!--te-->
+
+---
+---
+
+## **Máquinas Virtuais**
+Opera através de um hipervisor, um software executado no sistema operacional da máquina física, junto ao monitor de máquinas virtuais, o _Virtual Machine Monitor_. Nem sempre a virtualização da CPU vem habilitada na máquina, sendo necessário acessar as configurações ou a BIOS da mesma para permitir o uso das máquinas virtuais.
 
 ---
 ---
