@@ -93,6 +93,7 @@ Guia SQL
   * [Criando uma Função](#criando-uma-função)
   * [Chamando uma Função](#chamando-uma-função)
   * [Usando Delimiter](#usando-delimiter)
+---
 <!--te-->
 
 ---
