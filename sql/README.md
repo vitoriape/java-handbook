@@ -87,8 +87,8 @@ Guia SQL
 * [Modelo Key-Value](#modelo-key-value)
 * [Modelo Wide-Column](#modelo-wide-column)
 ---
-* [Funções Nativas]()
-* [Funções Armazenadas]()
+* [Funções Nativas](#funções-nativas)
+* [Funções Armazenadas](#funções-armazenadas)
   * [Função Determinística & Não Determinística](#função-determinística--não-determinística)
   * [Criando uma Função](#criando-uma-função)
   * [Chamando uma Função](#chamando-uma-função)
