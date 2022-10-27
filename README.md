@@ -69,38 +69,20 @@ O desenvolvimento desses códigos de teste utiliza as ferramentas abaixo:
 - [PowerBI Desktop](https://www.microsoft.com/pt-br/download/details.aspx?id=58494)
 
 ## References
-### Git and GitHub
-- [Git Documentation](https://git-scm.com/doc)
 
-### DAX
-- [Referência de DAX](https://docs.microsoft.com/pt-br/dax/)
-
-### Java
-- [Java SE Documentation](https://www.oracle.com/java/technologies/javase-documentation.html)
-
-### JavaScript
-- [JavaScript Guide](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide)
-
-### Latex
-- [Overleaf Guides](https://pt.overleaf.com/learn)
-
-### HTML
-- [HTML Reference](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference)
-
-### Packet Tracer
-- [Cisco Packet Tracer 8.1.0 FAQ](https://www.netacad.com/sites/default/files/cisco-packet-tracer-faq.pdf)
-
-### Visual Basic for Applications
-- [Excel VBA Reference](https://docs.microsoft.com/en-us/office/vba/api/overview/excel)
-
-### Python
-- [Python Reference](https://docs.python.org/3/)
-
-### Jupyter
-- [Jupyter Read The Docs](https://jupyter.readthedocs.io/pt_BR/latest/content-quickstart.html)
-
-### SQL
-- [SQL Reference](https://dev.mysql.com/doc/)
+| **Tool**       | **Documentation** 						                               |
+|----------------|---------------------------------------------------------------------------------------------|
+| Git and GitHub | [Git Documentation](https://git-scm.com/doc)                                                |
+|   DAX          | [Referência de DAX](https://docs.microsoft.com/pt-br/dax/)     			       |
+|     Java       | [Java SE Documentation](https://www.oracle.com/java/technologies/javase-documentation.html) |
+|  JavaScript    | [JavaScript Guide](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide)           |
+|   Latex        |    [Overleaf Guides](https://pt.overleaf.com/learn)                                         |
+|     HTML       |  [HTML Reference](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference)              |
+|  Packet Tracer | [Cisco Packet Tracer 8.1.0 FAQ](https://www.netacad.com/sites/default/files/cisco-packet-tracer-faq.pdf)                   |
+|   Visual Basic for Applications             |  [Excel VBA Reference](https://docs.microsoft.com/en-us/office/vba/api/overview/excel)                 |
+|     Python           |        [Python Reference](https://docs.python.org/3/)           |
+|       Jupyter         |     [Jupyter Read The Docs](https://jupyter.readthedocs.io/pt_BR/latest/content-quickstart.html)              |
+|      SQL          |      [SQL Reference](https://dev.mysql.com/doc/)             |
 
 ---
 
