@@ -12,7 +12,7 @@ Index
 <!--ts-->
 * [Máquinas Virtuais](#máquinas-virtuais)
   * [Configuração de Rede](#configuração-de-rede)
-  * [Instalando Servidores](#instalando-servidores)
+  * [Instalando Máquinas](#instalando-maquinas)
     * [Domínio](#domínio)
     * [Group Policy (GPO)](#group-policy-gpo)
     * [Active Directory (AD DS)](#active-directory-ad-ds)
@@ -35,7 +35,7 @@ O Modo de Rede escolhido para uma máquina virtual determina se a mesma tem **ac
 
 <table><thead><tr><th>Modo de Rede</th><th>ACESSO A INTERNET</th><th>COMUNICAÇÃO COM HOST</th><th>COMUNICAÇÃO COM OUTRAS VMs</th><th>VISIBILIDADE NA REDE LOCAL DO HOST</th></tr></thead><tbody><tr><td>NAT</td><td>Sim</td><td>Não</td><td>Não</td><td>Não</td></tr><tr><td>NAT Network</td><td>Sim</td><td>Não</td><td>Sim</td><td>Não</td></tr><tr><td>Bridged Networking</td><td>Sim</td><td>Sim</td><td>Sim</td><td>Sim</td></tr><tr><td>Internal Networking</td><td>Não</td><td>Não</td><td>Sim</td><td>Não</td></tr><tr><td>Host-only Adapter</td><td>Não</td><td>Sim</td><td>Sim</td><td>Não</td></tr></tbody></table>
 
-### **Instalando Servidores**
+### **Instalando Máquinas**
 A **Instalação Limpa** de um servidor contempla a implementação ou substituição de um sistema operacional, enquanto que a **Atualização in-loco** mantém o hardware, as configurações, os dados e as funções, apenas mudando o sistema existente. Já a **Atualização em Cluster** permite a atualização sem interromper o Hyper-V ou o trabalho do servidor.
 
 - **Alterar o Nome da Máquina**
@@ -44,17 +44,38 @@ Win + R
 sysdm.dpl
 ```
 
-- **Configurar IP Estático do Servidor**
-Modificar o IP de "Obter um endereço de IP automaticamente" para "Usar o seguinte endereço IP:"
-A placa de rede da máquina virtual deve estar configurada como host-only
+- **Configurações**
+As placas de rede das máquinas virtuais devem estar configuradas como host-only
 
 ```cmd
 Win + R
-ncpa.
+ncpa.cpl
+```
 
+* Servidor
+```cmd
 IP: 10.0.0.100
-Máscara de sub-rede: 255.0.0.0
+Máscara: 255.0.0.0
 Gateway padrão: 10.0.0.1
+Servidor DNS preferencial: 127.0.0.1
+```
+
+* Servidor (Core)
+```cmd
+sconfig
+
+IP: 10.0.0.103
+Máscara: 255.0.0.0
+Gateway padrão: 10.0.0.1
+Servidor DNS preferencial: 10.0.0.100
+```
+
+* Host
+```cmd
+IP: 10.0.0.102
+Máscara: 255.0.0.0
+Gateway padrão: 10.0.0.1
+Servidor DNS preferencial: 10.0.0.100
 ```
 
 * Caso seja necessário comunicação com a rede externa, deve-se adicionar uma placa de rede e deixar em modo BRIDGE
