@@ -12,13 +12,14 @@ Index
 <!--ts-->
 * [Máquinas Virtuais](#máquinas-virtuais)
   * [Configuração de Rede](#configuração-de-rede)
-  * [Instalando Máquinas](#instalando-maquinas)
+  * [Instalando Máquinas](#instalando-máquinas)
     * [Domínio](#domínio)
     * [Group Policy (GPO)](#group-policy-gpo)
     * [Active Directory (AD DS)](#active-directory-ad-ds)
     * [Domínio do Active Directory](#domínio-do-active-directory)
     * [Unidade Organizacional (UO)](#unidade-organizacional-uo)
   * [Adicionando Funções e Recursos](#adicionando-funções-e-recursos)
+  * [Criando Usuários](#criando-usuários)
 <!--te-->
 
 ---
@@ -58,6 +59,28 @@ IP: 10.0.0.100
 Máscara: 255.0.0.0
 Gateway padrão: 10.0.0.1
 Servidor DNS preferencial: 127.0.0.1
+
+\\Script do Windows PowerShell para Implantação do AD DS
+
+Import-Module ADDSDeployment
+Install-ADDSForest `
+-CreateDnsDelegation:$false `
+-DatabasePath "C:\Windows\NTDS" `
+-DomainMode "WinThreshold" `
+-DomainName "NOME.LOCAL" `
+-DomainNetbiosName "NOME" `
+-ForestMode "WinThreshold" `
+-InstallDns:$true `
+-LogPath "C:\Windows\NTDS" `
+-NoRebootOnCompletion:$false `
+-SysvolPath "C:\Windows\SYSVOL" `
+-Force:$true
+
+\\Exportar IFM
+NTDSUTIL
+Activate instance ntds
+IFM
+Create sysvol full C:\IFM
 ```
 
 * Servidor (Core)
@@ -109,6 +132,15 @@ Objeto de contêiner dentro de um domínio que pode ser utilizado para consolida
 No Painel do Gerenciador de Servidor, afim de configurar o servidor local, deve-se selecionar o servidor anteriormente configurado em Seleção de Servidor. Na tela Funções, selecionar o módulo Serviços de Domínio Active Directory e confirmar a adição do recurso.
 
 * Caso não seja selecionado automáticamente, marcar a função Servidor DNS
+
+>---
+
+### **Criando Usuários**
+
+```cmd
+dsadd user cn="Nome Sobrenome", ou=Departamento, dc=dominio, dc=local -samId NSobrenome -upn "nsobrenome@dominio.local" -fn Nome -ln Sobrenome -pwd "Senha" -disable no
+```
+
 
 ---
 ---
