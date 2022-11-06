@@ -1,7 +1,0 @@
-Soma Filtrada = CALCULATE(SUM('FontedeDados'[ValorTotal]),
-                    'FontedeDados'[Tipo]
-                        IN { "VALOR 1",
-                            "VALOR 2",
-                            "VALOR 3",
-                            "VALOR 4",
-                            "VALOR 5" })
