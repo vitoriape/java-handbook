@@ -1,28 +1,7 @@
-<h3 align="center"> 
-  <img alt="java_handbook banner" src="assets/java_handbook.png" width="1000" height="400">
-</h3>
+# Java Handbook <img src="assets/tea-311844_640.png" width="10%" height="10%" align="right" valign="center"/> 
 
-<h1 align="center">
-   🔰 <a href="#"> JAVA HANDBOOK </a>
-</h1>
-
-<h3 align="center">
-    Info and templates
-</h3>
-
-
-<p align="center">
-  <img alt="GitHub language count" src="https://img.shields.io/github/languages/count/vitoriape/algorithm-quickstart?color=%23ff5c33">
-  
-  <img alt="GitHub top language" src="https://img.shields.io/github/languages/top/vitoriape/algorithm-quickstart">
-  
-  <img alt="GitHub repo size" src="https://img.shields.io/github/repo-size/vitoriape/algorithm-quickstart?color=%ffff00">
-  </a>
-</p>
-
-<h4 align="center"> 
-	 Status: Finished
-</h4>
+![learning](https://img.shields.io/badge/Java-learning-green.svg)
+[![Hits](https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https://github.com/vitoriape/java-handbook&count_bg=%2379C83D&title_bg=%23555555&icon=&icon_color=%23E7E7E7&title=Views&edge_flat=false)](https://hits.seeyoufarm.com)
 
 ---
 
